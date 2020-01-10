@@ -15,6 +15,9 @@
 		6E59D62D23C8B19A00E8A5CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E59D62B23C8B19A00E8A5CE /* LaunchScreen.storyboard */; };
 		6E59D63823C8B19B00E8A5CE /* WhimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D63723C8B19B00E8A5CE /* WhimTests.swift */; };
 		6E59D64323C8B19B00E8A5CE /* WhimUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D64223C8B19B00E8A5CE /* WhimUITests.swift */; };
+		83EADC284879C18A21C27407 /* Pods_WhimUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5D4F75DB5D7D63C1B5AF0B /* Pods_WhimUITests.framework */; };
+		A9A2687E79DE2BAFDF5FA65C /* Pods_Whim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD39A5CEFA4EB34EBF6AECE /* Pods_Whim.framework */; };
+		B0F5C2016935F2BC0A521334 /* Pods_WhimTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C23707D9CB0849005E4C0A /* Pods_WhimTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42D95C6C1539DF4833F8F28F /* Pods-Whim.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whim.release.xcconfig"; path = "Pods/Target Support Files/Pods-Whim/Pods-Whim.release.xcconfig"; sourceTree = "<group>"; };
+		436391AA9399100F9BBDD41F /* Pods-WhimUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhimUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhimUITests/Pods-WhimUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6E59D61D23C8B19900E8A5CE /* Whim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E59D62023C8B19900E8A5CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E59D62223C8B19900E8A5CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +54,13 @@
 		6E59D63E23C8B19B00E8A5CE /* WhimUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhimUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E59D64223C8B19B00E8A5CE /* WhimUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhimUITests.swift; sourceTree = "<group>"; };
 		6E59D64423C8B19B00E8A5CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81C23707D9CB0849005E4C0A /* Pods_WhimTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhimTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFD39A5CEFA4EB34EBF6AECE /* Pods_Whim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Whim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C33E037C34309FED72871000 /* Pods-WhimTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhimTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhimTests/Pods-WhimTests.release.xcconfig"; sourceTree = "<group>"; };
+		CB57FCFCAB31F46F3A633F86 /* Pods-WhimTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhimTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhimTests/Pods-WhimTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D446697415DCE6E81EAB91E2 /* Pods-WhimUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhimUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhimUITests/Pods-WhimUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DD1398209EA9648FB08034C6 /* Pods-Whim.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whim.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Whim/Pods-Whim.debug.xcconfig"; sourceTree = "<group>"; };
+		FD5D4F75DB5D7D63C1B5AF0B /* Pods_WhimUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhimUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9A2687E79DE2BAFDF5FA65C /* Pods_Whim.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0F5C2016935F2BC0A521334 /* Pods_WhimTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83EADC284879C18A21C27407 /* Pods_WhimUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +98,8 @@
 				6E59D63623C8B19B00E8A5CE /* WhimTests */,
 				6E59D64123C8B19B00E8A5CE /* WhimUITests */,
 				6E59D61E23C8B19900E8A5CE /* Products */,
+				F15CFFF8243AAF947F0F173A /* Pods */,
+				A2E46DD5ED0EB85B63D6524A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +145,29 @@
 			path = WhimUITests;
 			sourceTree = "<group>";
 		};
+		A2E46DD5ED0EB85B63D6524A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFD39A5CEFA4EB34EBF6AECE /* Pods_Whim.framework */,
+				81C23707D9CB0849005E4C0A /* Pods_WhimTests.framework */,
+				FD5D4F75DB5D7D63C1B5AF0B /* Pods_WhimUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F15CFFF8243AAF947F0F173A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD1398209EA9648FB08034C6 /* Pods-Whim.debug.xcconfig */,
+				42D95C6C1539DF4833F8F28F /* Pods-Whim.release.xcconfig */,
+				CB57FCFCAB31F46F3A633F86 /* Pods-WhimTests.debug.xcconfig */,
+				C33E037C34309FED72871000 /* Pods-WhimTests.release.xcconfig */,
+				436391AA9399100F9BBDD41F /* Pods-WhimUITests.debug.xcconfig */,
+				D446697415DCE6E81EAB91E2 /* Pods-WhimUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +175,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E59D64723C8B19B00E8A5CE /* Build configuration list for PBXNativeTarget "Whim" */;
 			buildPhases = (
+				0213087E9D1F987F64EE35CD /* [CP] Check Pods Manifest.lock */,
 				6E59D61923C8B19900E8A5CE /* Sources */,
 				6E59D61A23C8B19900E8A5CE /* Frameworks */,
 				6E59D61B23C8B19900E8A5CE /* Resources */,
+				4FC925F8FC3ABB3179E00CD4 /* [CP] Embed Pods Frameworks */,
+				08D9656D0EA021AB4BF4643B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E59D64A23C8B19B00E8A5CE /* Build configuration list for PBXNativeTarget "WhimTests" */;
 			buildPhases = (
+				03E14EFA9C86F5F21D50B91A /* [CP] Check Pods Manifest.lock */,
 				6E59D62F23C8B19A00E8A5CE /* Sources */,
 				6E59D63023C8B19A00E8A5CE /* Frameworks */,
 				6E59D63123C8B19A00E8A5CE /* Resources */,
+				938A054639031BB1E7BFA519 /* [CP] Embed Pods Frameworks */,
+				4BB7AABBFD0C09B2F42F6899 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E59D64D23C8B19B00E8A5CE /* Build configuration list for PBXNativeTarget "WhimUITests" */;
 			buildPhases = (
+				8F6A1B017A6BE31B4FA93A93 /* [CP] Check Pods Manifest.lock */,
 				6E59D63A23C8B19B00E8A5CE /* Sources */,
 				6E59D63B23C8B19B00E8A5CE /* Frameworks */,
 				6E59D63C23C8B19B00E8A5CE /* Resources */,
+				9A136C534B54571C50444AA3 /* [CP] Embed Pods Frameworks */,
+				80B24CD9B72D839AABDB4EF2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +302,166 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0213087E9D1F987F64EE35CD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Whim-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		03E14EFA9C86F5F21D50B91A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhimTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		08D9656D0EA021AB4BF4643B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Whim/Pods-Whim-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4BB7AABBFD0C09B2F42F6899 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhimTests/Pods-WhimTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FC925F8FC3ABB3179E00CD4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Whim/Pods-Whim-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Whim/Pods-Whim-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80B24CD9B72D839AABDB4EF2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhimUITests/Pods-WhimUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F6A1B017A6BE31B4FA93A93 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhimUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		938A054639031BB1E7BFA519 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhimTests/Pods-WhimTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A136C534B54571C50444AA3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhimUITests/Pods-WhimUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6E59D61923C8B19900E8A5CE /* Sources */ = {
@@ -432,15 +641,13 @@
 		};
 		6E59D64823C8B19B00E8A5CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD1398209EA9648FB08034C6 /* Pods-Whim.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HQYYQ84UXR;
 				INFOPLIST_FILE = Whim/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gg.Whim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -450,15 +657,13 @@
 		};
 		6E59D64923C8B19B00E8A5CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42D95C6C1539DF4833F8F28F /* Pods-Whim.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HQYYQ84UXR;
 				INFOPLIST_FILE = Whim/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gg.Whim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -468,6 +673,7 @@
 		};
 		6E59D64B23C8B19B00E8A5CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB57FCFCAB31F46F3A633F86 /* Pods-WhimTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -475,11 +681,7 @@
 				DEVELOPMENT_TEAM = HQYYQ84UXR;
 				INFOPLIST_FILE = WhimTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gg.WhimTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -490,6 +692,7 @@
 		};
 		6E59D64C23C8B19B00E8A5CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C33E037C34309FED72871000 /* Pods-WhimTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -497,11 +700,7 @@
 				DEVELOPMENT_TEAM = HQYYQ84UXR;
 				INFOPLIST_FILE = WhimTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gg.WhimTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -512,16 +711,13 @@
 		};
 		6E59D64E23C8B19B00E8A5CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 436391AA9399100F9BBDD41F /* Pods-WhimUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HQYYQ84UXR;
 				INFOPLIST_FILE = WhimUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gg.WhimUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -532,16 +728,13 @@
 		};
 		6E59D64F23C8B19B00E8A5CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D446697415DCE6E81EAB91E2 /* Pods-WhimUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HQYYQ84UXR;
 				INFOPLIST_FILE = WhimUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gg.WhimUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
