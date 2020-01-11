@@ -44,7 +44,7 @@ class NavigationCoordinator: BaseCoordinator, NavigationCoordinatorOutput {
         let coordinator = coordinatorFactory.makePermissionsCoordinator(router: router)
         
         coordinator.finishFlow = { [weak self, weak coordinator] in
-            self?.handleStartLocation()
+            self?.handleLocationObtained()
             
             self?.removeDependency(coordinator)
         }
@@ -53,12 +53,12 @@ class NavigationCoordinator: BaseCoordinator, NavigationCoordinatorOutput {
         coordinator.start()
     }
     
-    private func handleStartLocation() {
+    private func handleLocationObtained() {
         let handler = handlerFactory.getLocationHandler()
         
         handler.onDidUpdateLocations = { [weak self, weak handler] (locations: [CLLocation]) in
             if locations.count == 1 {
-                self?.mapView.loadPointOfInterests(location: locations[0])
+                self?.mapView.locationObtained(location: locations[0])
             }
             
             self?.removeDependency(handler)

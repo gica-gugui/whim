@@ -9,5 +9,7 @@
 import CoreLocation
 
 protocol MapViewModelProtocol {
+    var onPoisLoaded: ((_ pois: [POI]) -> Void)? { get set }
+    
     func loadPointOfInterests(location: CLLocation)
 }

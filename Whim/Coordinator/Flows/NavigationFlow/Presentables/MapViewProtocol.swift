@@ -9,5 +9,5 @@
 import CoreLocation
 
 protocol MapViewProtocol: BaseViewProtocol {
-    func loadPointOfInterests(location: CLLocation)
+    func locationObtained(location: CLLocation)
 }

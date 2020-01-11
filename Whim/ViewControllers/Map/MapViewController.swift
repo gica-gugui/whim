@@ -21,11 +21,45 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
     }
     
     private func setupViewModel() {
-        // set delegates here
-        // when receiving the locations from api
+        viewModel.onPoisLoaded = { [weak self] pois in
+             self?.setPois(pois: pois)
+        }
     }
     
-    func loadPointOfInterests(location: CLLocation) {
+    func locationObtained(location: CLLocation) {
+        setCurrentLocation(location: location)
+        
         viewModel.loadPointOfInterests(location: location)
     }
+    
+    private func setCurrentLocation(location: CLLocation) {
+        let mapAnnotation = MapAnnotation(
+            title: "Current location",
+            type: .currentLocation,
+            coordinate: location.coordinate)
+            
+        mapView.addAnnotation(mapAnnotation)
+        
+        mapView.setCenter(location.coordinate, animated: true)
+    }
+    
+    private func setPois(pois:[POI]) {
+        var poiAnnotations = [MapAnnotation]()
+        
+        for poi in pois {
+            let poiAnnotation = MapAnnotation(
+                title: poi.title,
+                type: .poi,
+                coordinate: CLLocationCoordinate2D(latitude: poi.lat, longitude: poi.lon))
+            
+            poiAnnotations.append(poiAnnotation)
+        }
+        
+        mapView.addAnnotations(poiAnnotations)
+    }
 }
+
+extension MapViewController: MKMapViewDelegate {
+
+}
+

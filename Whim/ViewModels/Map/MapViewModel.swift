@@ -12,6 +12,8 @@ import RxSwift
 class MapViewModel: MapViewModelProtocol {
     private var wikiRepository: WikiRepositoryProtocol
     
+    var onPoisLoaded: ((_ pois: [POI]) -> Void)?
+    
     private var disposeBag = DisposeBag()
     
     init(wikiRepository: WikiRepository) {
@@ -21,13 +23,12 @@ class MapViewModel: MapViewModelProtocol {
     func loadPointOfInterests(location: CLLocation) {
         _ = wikiRepository.getPOIs(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             .subscribeOn(InfraHelper.backgroundWorkScheduler)
-            .do(onError: { [weak self] error in
+            .do(onError: { error in
                 print(error)
-                // self?.handleError(error: error)
             })
             .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] poiResult in
-                print(poiResult)
+                self?.onPoisLoaded?(poiResult.query.geosearch)
             })
             .disposed(by: disposeBag)
     }
