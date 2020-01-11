@@ -12,6 +12,6 @@ typealias ModuleFactoryProtocol = MapModuleFactoryProtocol
 
 final class ModuleFactory: ModuleFactoryProtocol {
     func makeMapOutput() -> MapViewProtocol {
-        return MapViewController()
+        return MapViewController.controllerFromStoryboard(.main)
     }
 }
