@@ -9,15 +9,8 @@
 import Alamofire
 import RxSwift
 
-public class AuthApi: ApiProtocol {
+public class Api: ApiProtocol {
     public var manager: SessionManager!
-    
-    fileprivate static var instance: AuthApi!
-    
-    public class func sharedInstance() -> AuthApi {
-        instance = (instance ?? AuthApi())
-        return instance
-    }
     
     private func executeBaseRequest<T>(
         url: URL,

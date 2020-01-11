@@ -10,12 +10,25 @@ import CoreLocation
 import RxSwift
 
 class MapViewModel: MapViewModelProtocol {
-    init() {
-        // dependencies here
+    private var wikiRepository: WikiRepositoryProtocol
+    
+    private var disposeBag = DisposeBag()
+    
+    init(wikiRepository: WikiRepository) {
+        self.wikiRepository = wikiRepository
     }
     
     func loadPointOfInterests(location: CLLocation) {
-        // call api with location info
-        print("now call api cause I have a location")
+        _ = wikiRepository.getPOIs(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            .subscribeOn(InfraHelper.backgroundWorkScheduler)
+            .do(onError: { [weak self] error in
+                print(error)
+                // self?.handleError(error: error)
+            })
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] poiResult in
+                print(poiResult)
+            })
+            .disposed(by: disposeBag)
     }
 }

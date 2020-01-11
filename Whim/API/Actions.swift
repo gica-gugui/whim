@@ -8,6 +8,6 @@
 
 public struct Action {
     struct Wikipedia {
-        static let PointOfInterests = "/api/Account"
+        static let PointOfInterests = "/w/api.php"
     }
 }
