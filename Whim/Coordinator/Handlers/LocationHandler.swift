@@ -33,6 +33,8 @@ class LocationHandler: NSObject, LocationHandlerProtocol {
             permissionStatus()
         case .requestPermission:
             requestPermission()
+        case .retrieveLocation:
+            retrieveLocation()
         }
     }
     
@@ -56,6 +58,19 @@ class LocationHandler: NSObject, LocationHandlerProtocol {
             self.onPermissionStatusObtained?(permissionStatus)
         }
     }
+    
+    private func retrieveLocation() {
+        DispatchQueue.main.async {
+            guard CLLocationManager.authorizationStatus() == .authorizedWhenInUse
+                else {
+                    self.onDidUpdateLocations?([])
+                    
+                    return
+            }
+            
+            self.manager.requestLocation()
+        }
+    }
 }
 
 extension LocationHandler: CLLocationManagerDelegate {
@@ -69,5 +84,9 @@ extension LocationHandler: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         onDidUpdateLocations?(locations)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        onDidUpdateLocations?([])
     }
 }

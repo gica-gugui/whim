@@ -11,11 +11,13 @@ import CoreLocation
 struct LocationConstants {
     static let RequestPermission = "requestPermission"
     static let PermissionStatus = "permissionStatus"
+    static let RetrieveLocation = "retrieveLocation"
 }
 
 enum LocationHandlerOption {
     case requestPermission
     case permissionStatus
+    case retrieveLocation
     
     static func build(type: String) -> LocationHandlerOption {
         switch type {
@@ -23,6 +25,8 @@ enum LocationHandlerOption {
             return .requestPermission
         case LocationConstants.PermissionStatus:
             return .permissionStatus
+        case LocationConstants.RetrieveLocation:
+            return .retrieveLocation
         default:
             fatalError("LocationHandlerOption cannot be constructed with type \(type)")
         }

@@ -10,11 +10,22 @@ import UIKit
 import MapKit
 
 class MapViewController: BaseViewController, MapViewProtocol, IntermediableProtocol {
-    
     @IBOutlet private weak var mapView: MKMapView!
+    
+    var viewModel: MapViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        setupViewModel()
+    }
+    
+    private func setupViewModel() {
+        // set delegates here
+        // when receiving the locations from api
+    }
+    
+    func loadPointOfInterests(location: CLLocation) {
+        viewModel.loadPointOfInterests(location: location)
     }
 }

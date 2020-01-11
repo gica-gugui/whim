@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class NavigationCoordinator: BaseCoordinator, NavigationCoordinatorOutput {
     private let coordinatorFactory: CoordinatorFactoryProtocol
@@ -43,11 +44,30 @@ class NavigationCoordinator: BaseCoordinator, NavigationCoordinatorOutput {
         let coordinator = coordinatorFactory.makePermissionsCoordinator(router: router)
         
         coordinator.finishFlow = { [weak self, weak coordinator] in
+            self?.handleStartLocation()
+            
             self?.removeDependency(coordinator)
         }
         
         addDependency(coordinator)
         coordinator.start()
+    }
+    
+    private func handleStartLocation() {
+        let handler = handlerFactory.getLocationHandler()
+        
+        handler.onDidUpdateLocations = { [weak self, weak handler] (locations: [CLLocation]) in
+            if locations.count == 1 {
+                self?.mapView.loadPointOfInterests(location: locations[0])
+            }
+            
+            self?.removeDependency(handler)
+        }
+        
+        addDependency(handler)
+        
+        let handlerOption = LocationHandlerOption.build(type: LocationConstants.RetrieveLocation)
+        handler.handle(with: handlerOption)
     }
     
     private func removeAllDependencies() {

@@ -1,13 +1,13 @@
 //
-//  MapViewProtocol.swift
+//  MapViewModelProtocol.swift
 //  Whim
 //
-//  Created by Gica Gugui on 10/01/2020.
+//  Created by Gica Gugui on 11/01/2020.
 //  Copyright © 2020 Gica Gugui. All rights reserved.
 //
 
 import CoreLocation
 
-protocol MapViewProtocol: BaseViewProtocol {
+protocol MapViewModelProtocol {
     func loadPointOfInterests(location: CLLocation)
 }
