@@ -7,9 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FA699A423C9146A00ECED74 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699A323C9146A00ECED74 /* ApplicationCoordinator.swift */; };
+		0FA699A823C9182800ECED74 /* NavigationCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699A723C9182800ECED74 /* NavigationCoordinatorOutput.swift */; };
+		0FA699AA23C9184500ECED74 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699A923C9184500ECED74 /* NavigationCoordinator.swift */; };
+		0FA699AD23C91A8E00ECED74 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699AC23C91A8E00ECED74 /* MapViewController.swift */; };
+		0FA699B123C91B7100ECED74 /* MapViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699B023C91B7100ECED74 /* MapViewProtocol.swift */; };
+		0FA699B923C91F6200ECED74 /* MapModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699B823C91F6200ECED74 /* MapModuleFactoryProtocol.swift */; };
+		0FA699BD23C9202300ECED74 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699BC23C9202300ECED74 /* UIViewController.swift */; };
+		0FA699BF23C920B200ECED74 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699BE23C920B200ECED74 /* NSObject.swift */; };
+		0FA699C323C9290100ECED74 /* PermissionsCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699C223C9290100ECED74 /* PermissionsCoordinatorOutput.swift */; };
+		0FA699C523C9291B00ECED74 /* PermissionsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699C423C9291B00ECED74 /* PermissionsCoordinator.swift */; };
+		0FA699C923C92A5E00ECED74 /* LocationHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699C823C92A5E00ECED74 /* LocationHandlerProtocol.swift */; };
+		0FA699CB23C92A9100ECED74 /* PrePermissionHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699CA23C92A9100ECED74 /* PrePermissionHandlerProtocol.swift */; };
+		0FA699CD23C92AC600ECED74 /* PrePremissionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699CC23C92AC600ECED74 /* PrePremissionConstants.swift */; };
+		0FA699CF23C92B5F00ECED74 /* PresentableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699CE23C92B5F00ECED74 /* PresentableProtocol.swift */; };
+		0FA699D123C92B9100ECED74 /* ReachabilityHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699D023C92B9100ECED74 /* ReachabilityHandlerProtocol.swift */; };
+		0FA699D523C92BDF00ECED74 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699D423C92BDF00ECED74 /* NetworkStatus.swift */; };
+		0FA699D723C92BFF00ECED74 /* CellularConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699D623C92BFF00ECED74 /* CellularConnectionType.swift */; };
+		0FA699D923C92C1600ECED74 /* NetworkConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699D823C92C1600ECED74 /* NetworkConnectionType.swift */; };
+		0FA699DB23C92C6800ECED74 /* ReachabilityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699DA23C92C6800ECED74 /* ReachabilityHandler.swift */; };
+		0FA699DD23C92E1B00ECED74 /* PrePermissionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699DC23C92E1B00ECED74 /* PrePermissionHandler.swift */; };
+		0FA699DF23C92EE700ECED74 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699DE23C92EE700ECED74 /* LocationHandler.swift */; };
+		0FA699E123C92FF400ECED74 /* PrePermissionHandlerFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699E023C92FF400ECED74 /* PrePermissionHandlerFactoryProtocol.swift */; };
 		6E59D62123C8B19900E8A5CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D62023C8B19900E8A5CE /* AppDelegate.swift */; };
 		6E59D62323C8B19900E8A5CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D62223C8B19900E8A5CE /* SceneDelegate.swift */; };
-		6E59D62523C8B19900E8A5CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D62423C8B19900E8A5CE /* ViewController.swift */; };
 		6E59D62A23C8B19A00E8A5CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E59D62923C8B19A00E8A5CE /* Assets.xcassets */; };
 		6E59D62D23C8B19A00E8A5CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E59D62B23C8B19A00E8A5CE /* LaunchScreen.storyboard */; };
 		6E59D63823C8B19B00E8A5CE /* WhimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D63723C8B19B00E8A5CE /* WhimTests.swift */; };
@@ -25,23 +46,16 @@
 		6E59D66E23C8BDBA00E8A5CE /* LocationServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D66D23C8BDBA00E8A5CE /* LocationServiceDelegate.swift */; };
 		6E59D67023C8BDEB00E8A5CE /* LocationHandlerFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D66F23C8BDEB00E8A5CE /* LocationHandlerFactoryProtocol.swift */; };
 		6E59D67223C8BE3E00E8A5CE /* ReachabilityHandlerFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D67123C8BE3E00E8A5CE /* ReachabilityHandlerFactoryProtocol.swift */; };
-		6E59D67523C8BEC600E8A5CE /* LoadingModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D67423C8BEC600E8A5CE /* LoadingModuleFactoryProtocol.swift */; };
-		6E59D67723C8BEEA00E8A5CE /* StartModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D67623C8BEEA00E8A5CE /* StartModuleFactoryProtocol.swift */; };
 		6E59D67923C8BF1200E8A5CE /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D67823C8BF1200E8A5CE /* CoordinatorFactory.swift */; };
 		6E59D67B23C8BF2400E8A5CE /* HandlerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D67A23C8BF2400E8A5CE /* HandlerFactory.swift */; };
 		6E59D67D23C8BF2D00E8A5CE /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D67C23C8BF2D00E8A5CE /* ModuleFactory.swift */; };
 		6E59D68123C8BF9700E8A5CE /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D68023C8BF9700E8A5CE /* RouterProtocol.swift */; };
 		6E59D68423C8BFE200E8A5CE /* BaseViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D68323C8BFE200E8A5CE /* BaseViewProtocol.swift */; };
 		6E59D68623C8BFF400E8A5CE /* HandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D68523C8BFF400E8A5CE /* HandlerProtocol.swift */; };
-		6E59D68823C8C00800E8A5CE /* PresentableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D68723C8C00800E8A5CE /* PresentableProtocol.swift */; };
 		6E59D68A23C8C05200E8A5CE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D68923C8C05200E8A5CE /* Router.swift */; };
 		6E59D69023C8CD4700E8A5CE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D68F23C8CD4700E8A5CE /* BaseViewController.swift */; };
 		6E59D69223C8D3DC00E8A5CE /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D69123C8D3DC00E8A5CE /* BaseNavigationController.swift */; };
 		6E59D69423C8D49300E8A5CE /* IntermediableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D69323C8D49300E8A5CE /* IntermediableProtocol.swift */; };
-		6E59D69B23C8D55700E8A5CE /* LoadingCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D69A23C8D55700E8A5CE /* LoadingCoordinatorOutput.swift */; };
-		6E59D69D23C8D57400E8A5CE /* LoadingViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D69C23C8D57400E8A5CE /* LoadingViewProtocol.swift */; };
-		6E59D69F23C8D58400E8A5CE /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D69E23C8D58400E8A5CE /* LoadingCoordinator.swift */; };
-		6E59D6A223C8D71400E8A5CE /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D6A123C8D71400E8A5CE /* LoadingViewController.swift */; };
 		83EADC284879C18A21C27407 /* Pods_WhimUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5D4F75DB5D7D63C1B5AF0B /* Pods_WhimUITests.framework */; };
 		A9A2687E79DE2BAFDF5FA65C /* Pods_Whim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD39A5CEFA4EB34EBF6AECE /* Pods_Whim.framework */; };
 		B0F5C2016935F2BC0A521334 /* Pods_WhimTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C23707D9CB0849005E4C0A /* Pods_WhimTests.framework */; };
@@ -65,12 +79,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FA699A323C9146A00ECED74 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		0FA699A723C9182800ECED74 /* NavigationCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorOutput.swift; sourceTree = "<group>"; };
+		0FA699A923C9184500ECED74 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
+		0FA699AC23C91A8E00ECED74 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0FA699B023C91B7100ECED74 /* MapViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewProtocol.swift; sourceTree = "<group>"; };
+		0FA699B823C91F6200ECED74 /* MapModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModuleFactoryProtocol.swift; sourceTree = "<group>"; };
+		0FA699BC23C9202300ECED74 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		0FA699BE23C920B200ECED74 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
+		0FA699C223C9290100ECED74 /* PermissionsCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsCoordinatorOutput.swift; sourceTree = "<group>"; };
+		0FA699C423C9291B00ECED74 /* PermissionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsCoordinator.swift; sourceTree = "<group>"; };
+		0FA699C823C92A5E00ECED74 /* LocationHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandlerProtocol.swift; sourceTree = "<group>"; };
+		0FA699CA23C92A9100ECED74 /* PrePermissionHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePermissionHandlerProtocol.swift; sourceTree = "<group>"; };
+		0FA699CC23C92AC600ECED74 /* PrePremissionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePremissionConstants.swift; sourceTree = "<group>"; };
+		0FA699CE23C92B5F00ECED74 /* PresentableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableProtocol.swift; sourceTree = "<group>"; };
+		0FA699D023C92B9100ECED74 /* ReachabilityHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityHandlerProtocol.swift; sourceTree = "<group>"; };
+		0FA699D423C92BDF00ECED74 /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
+		0FA699D623C92BFF00ECED74 /* CellularConnectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellularConnectionType.swift; sourceTree = "<group>"; };
+		0FA699D823C92C1600ECED74 /* NetworkConnectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectionType.swift; sourceTree = "<group>"; };
+		0FA699DA23C92C6800ECED74 /* ReachabilityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityHandler.swift; sourceTree = "<group>"; };
+		0FA699DC23C92E1B00ECED74 /* PrePermissionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePermissionHandler.swift; sourceTree = "<group>"; };
+		0FA699DE23C92EE700ECED74 /* LocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
+		0FA699E023C92FF400ECED74 /* PrePermissionHandlerFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePermissionHandlerFactoryProtocol.swift; sourceTree = "<group>"; };
 		42D95C6C1539DF4833F8F28F /* Pods-Whim.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whim.release.xcconfig"; path = "Pods/Target Support Files/Pods-Whim/Pods-Whim.release.xcconfig"; sourceTree = "<group>"; };
 		436391AA9399100F9BBDD41F /* Pods-WhimUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhimUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhimUITests/Pods-WhimUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6E59D61D23C8B19900E8A5CE /* Whim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E59D62023C8B19900E8A5CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E59D62223C8B19900E8A5CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6E59D62423C8B19900E8A5CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6E59D62723C8B19900E8A5CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6E59D62923C8B19A00E8A5CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E59D62C23C8B19A00E8A5CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -91,23 +126,16 @@
 		6E59D66D23C8BDBA00E8A5CE /* LocationServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceDelegate.swift; sourceTree = "<group>"; };
 		6E59D66F23C8BDEB00E8A5CE /* LocationHandlerFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandlerFactoryProtocol.swift; sourceTree = "<group>"; };
 		6E59D67123C8BE3E00E8A5CE /* ReachabilityHandlerFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityHandlerFactoryProtocol.swift; sourceTree = "<group>"; };
-		6E59D67423C8BEC600E8A5CE /* LoadingModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingModuleFactoryProtocol.swift; sourceTree = "<group>"; };
-		6E59D67623C8BEEA00E8A5CE /* StartModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartModuleFactoryProtocol.swift; sourceTree = "<group>"; };
 		6E59D67823C8BF1200E8A5CE /* CoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
 		6E59D67A23C8BF2400E8A5CE /* HandlerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerFactory.swift; sourceTree = "<group>"; };
 		6E59D67C23C8BF2D00E8A5CE /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
 		6E59D68023C8BF9700E8A5CE /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		6E59D68323C8BFE200E8A5CE /* BaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewProtocol.swift; sourceTree = "<group>"; };
 		6E59D68523C8BFF400E8A5CE /* HandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerProtocol.swift; sourceTree = "<group>"; };
-		6E59D68723C8C00800E8A5CE /* PresentableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableProtocol.swift; sourceTree = "<group>"; };
 		6E59D68923C8C05200E8A5CE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		6E59D68F23C8CD4700E8A5CE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		6E59D69123C8D3DC00E8A5CE /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		6E59D69323C8D49300E8A5CE /* IntermediableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediableProtocol.swift; sourceTree = "<group>"; };
-		6E59D69A23C8D55700E8A5CE /* LoadingCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinatorOutput.swift; sourceTree = "<group>"; };
-		6E59D69C23C8D57400E8A5CE /* LoadingViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewProtocol.swift; sourceTree = "<group>"; };
-		6E59D69E23C8D58400E8A5CE /* LoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
-		6E59D6A123C8D71400E8A5CE /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		81C23707D9CB0849005E4C0A /* Pods_WhimTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhimTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD39A5CEFA4EB34EBF6AECE /* Pods_Whim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Whim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33E037C34309FED72871000 /* Pods-WhimTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhimTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhimTests/Pods-WhimTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,11 +173,117 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FA699A223C9145800ECED74 /* ApplicationFlow */ = {
+			isa = PBXGroup;
+			children = (
+				0FA699A323C9146A00ECED74 /* ApplicationCoordinator.swift */,
+			);
+			path = ApplicationFlow;
+			sourceTree = "<group>";
+		};
+		0FA699A523C9175900ECED74 /* NavigationFlow */ = {
+			isa = PBXGroup;
+			children = (
+				0FA699B723C91C6800ECED74 /* Presentables */,
+				0FA699A623C9180500ECED74 /* Delegates */,
+				0FA699A923C9184500ECED74 /* NavigationCoordinator.swift */,
+			);
+			path = NavigationFlow;
+			sourceTree = "<group>";
+		};
+		0FA699A623C9180500ECED74 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				0FA699A723C9182800ECED74 /* NavigationCoordinatorOutput.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		0FA699AB23C91A5D00ECED74 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				0FA699AC23C91A8E00ECED74 /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		0FA699B723C91C6800ECED74 /* Presentables */ = {
+			isa = PBXGroup;
+			children = (
+				0FA699B023C91B7100ECED74 /* MapViewProtocol.swift */,
+			);
+			path = Presentables;
+			sourceTree = "<group>";
+		};
+		0FA699BA23C91FEB00ECED74 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0FA699BC23C9202300ECED74 /* UIViewController.swift */,
+				0FA699BE23C920B200ECED74 /* NSObject.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0FA699C023C927FD00ECED74 /* PermissionsFlow */ = {
+			isa = PBXGroup;
+			children = (
+				0FA699C123C928E600ECED74 /* Delegates */,
+				0FA699C423C9291B00ECED74 /* PermissionsCoordinator.swift */,
+			);
+			path = PermissionsFlow;
+			sourceTree = "<group>";
+		};
+		0FA699C123C928E600ECED74 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				0FA699C223C9290100ECED74 /* PermissionsCoordinatorOutput.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		0FA699C623C92A1A00ECED74 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				0FA699C723C92A2F00ECED74 /* Protocols */,
+				0FA699DA23C92C6800ECED74 /* ReachabilityHandler.swift */,
+				0FA699DC23C92E1B00ECED74 /* PrePermissionHandler.swift */,
+				0FA699DE23C92EE700ECED74 /* LocationHandler.swift */,
+			);
+			path = Handlers;
+			sourceTree = "<group>";
+		};
+		0FA699C723C92A2F00ECED74 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0FA699C823C92A5E00ECED74 /* LocationHandlerProtocol.swift */,
+				0FA699CA23C92A9100ECED74 /* PrePermissionHandlerProtocol.swift */,
+				0FA699D023C92B9100ECED74 /* ReachabilityHandlerProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		0FA699D223C92BBE00ECED74 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0FA699D323C92BD100ECED74 /* Enums */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0FA699D323C92BD100ECED74 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				0FA699D423C92BDF00ECED74 /* NetworkStatus.swift */,
+				0FA699D623C92BFF00ECED74 /* CellularConnectionType.swift */,
+				0FA699D823C92C1600ECED74 /* NetworkConnectionType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		6E59D61423C8B19900E8A5CE = {
 			isa = PBXGroup;
 			children = (
 				6E59D61F23C8B19900E8A5CE /* Whim */,
-				6E59D6A323C8D74800E8A5CE /* ViewModel */,
 				6E59D63623C8B19B00E8A5CE /* WhimTests */,
 				6E59D64123C8B19B00E8A5CE /* WhimUITests */,
 				6E59D61E23C8B19900E8A5CE /* Products */,
@@ -173,10 +307,12 @@
 			children = (
 				6E59D65023C8B5EB00E8A5CE /* Application */,
 				6E59D65123C8B5F400E8A5CE /* Coordinator */,
+				0FA699BA23C91FEB00ECED74 /* Extensions */,
 				6E59D65223C8B6CC00E8A5CE /* Resources */,
 				6E59D65323C8B6E000E8A5CE /* Localization */,
 				6E59D65423C8B81C00E8A5CE /* Storyboards */,
 				6E59D68B23C8CB1E00E8A5CE /* ViewControllers */,
+				0FA699D223C92BBE00ECED74 /* Data */,
 			);
 			path = Whim;
 			sourceTree = "<group>";
@@ -204,7 +340,6 @@
 			children = (
 				6E59D62023C8B19900E8A5CE /* AppDelegate.swift */,
 				6E59D62223C8B19900E8A5CE /* SceneDelegate.swift */,
-				6E59D62423C8B19900E8A5CE /* ViewController.swift */,
 				6E59D62E23C8B19A00E8A5CE /* Info.plist */,
 			);
 			path = Application;
@@ -218,6 +353,7 @@
 				6E59D66123C8BC1D00E8A5CE /* Enums */,
 				6E59D66623C8BD4800E8A5CE /* Factories */,
 				6E59D69523C8D50500E8A5CE /* Flows */,
+				0FA699C623C92A1A00ECED74 /* Handlers */,
 				6E59D68223C8BFCC00E8A5CE /* Protocols */,
 				6E59D67E23C8BF6700E8A5CE /* Router */,
 			);
@@ -278,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				6E59D66223C8BC3400E8A5CE /* LocationHandlerOption.swift */,
+				0FA699CC23C92AC600ECED74 /* PrePremissionConstants.swift */,
 				6E59D66423C8BD1A00E8A5CE /* ReachabilityHandlerOption.swift */,
 			);
 			path = Enums;
@@ -317,6 +454,7 @@
 			children = (
 				6E59D66C23C8BDAA00E8A5CE /* Delegates */,
 				6E59D66F23C8BDEB00E8A5CE /* LocationHandlerFactoryProtocol.swift */,
+				0FA699E023C92FF400ECED74 /* PrePermissionHandlerFactoryProtocol.swift */,
 				6E59D67123C8BE3E00E8A5CE /* ReachabilityHandlerFactoryProtocol.swift */,
 			);
 			path = Handler;
@@ -333,8 +471,7 @@
 		6E59D67323C8BEB000E8A5CE /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				6E59D67423C8BEC600E8A5CE /* LoadingModuleFactoryProtocol.swift */,
-				6E59D67623C8BEEA00E8A5CE /* StartModuleFactoryProtocol.swift */,
+				0FA699B823C91F6200ECED74 /* MapModuleFactoryProtocol.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -362,7 +499,7 @@
 			children = (
 				6E59D68323C8BFE200E8A5CE /* BaseViewProtocol.swift */,
 				6E59D68523C8BFF400E8A5CE /* HandlerProtocol.swift */,
-				6E59D68723C8C00800E8A5CE /* PresentableProtocol.swift */,
+				0FA699CE23C92B5F00ECED74 /* PresentableProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -370,8 +507,8 @@
 		6E59D68B23C8CB1E00E8A5CE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6E59D6A023C8D70000E8A5CE /* Loading */,
 				6E59D68C23C8CB2A00E8A5CE /* Base */,
+				0FA699AB23C91A5D00ECED74 /* Map */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -388,58 +525,11 @@
 		6E59D69523C8D50500E8A5CE /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				6E59D69623C8D51600E8A5CE /* ApplicationFlow */,
-				6E59D69723C8D51C00E8A5CE /* LoadingFlow */,
+				0FA699A223C9145800ECED74 /* ApplicationFlow */,
+				0FA699A523C9175900ECED74 /* NavigationFlow */,
+				0FA699C023C927FD00ECED74 /* PermissionsFlow */,
 			);
 			path = Flows;
-			sourceTree = "<group>";
-		};
-		6E59D69623C8D51600E8A5CE /* ApplicationFlow */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ApplicationFlow;
-			sourceTree = "<group>";
-		};
-		6E59D69723C8D51C00E8A5CE /* LoadingFlow */ = {
-			isa = PBXGroup;
-			children = (
-				6E59D69823C8D53B00E8A5CE /* Delegates */,
-				6E59D69923C8D54200E8A5CE /* Presentables */,
-				6E59D69E23C8D58400E8A5CE /* LoadingCoordinator.swift */,
-			);
-			path = LoadingFlow;
-			sourceTree = "<group>";
-		};
-		6E59D69823C8D53B00E8A5CE /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				6E59D69A23C8D55700E8A5CE /* LoadingCoordinatorOutput.swift */,
-			);
-			path = Delegates;
-			sourceTree = "<group>";
-		};
-		6E59D69923C8D54200E8A5CE /* Presentables */ = {
-			isa = PBXGroup;
-			children = (
-				6E59D69C23C8D57400E8A5CE /* LoadingViewProtocol.swift */,
-			);
-			path = Presentables;
-			sourceTree = "<group>";
-		};
-		6E59D6A023C8D70000E8A5CE /* Loading */ = {
-			isa = PBXGroup;
-			children = (
-				6E59D6A123C8D71400E8A5CE /* LoadingViewController.swift */,
-			);
-			path = Loading;
-			sourceTree = "<group>";
-		};
-		6E59D6A323C8D74800E8A5CE /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A2E46DD5ED0EB85B63D6524A /* Frameworks */ = {
@@ -477,7 +567,6 @@
 				6E59D61A23C8B19900E8A5CE /* Frameworks */,
 				6E59D61B23C8B19900E8A5CE /* Resources */,
 				4FC925F8FC3ABB3179E00CD4 /* [CP] Embed Pods Frameworks */,
-				08D9656D0EA021AB4BF4643B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -496,8 +585,6 @@
 				6E59D62F23C8B19A00E8A5CE /* Sources */,
 				6E59D63023C8B19A00E8A5CE /* Frameworks */,
 				6E59D63123C8B19A00E8A5CE /* Resources */,
-				938A054639031BB1E7BFA519 /* [CP] Embed Pods Frameworks */,
-				4BB7AABBFD0C09B2F42F6899 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -517,8 +604,6 @@
 				6E59D63A23C8B19B00E8A5CE /* Sources */,
 				6E59D63B23C8B19B00E8A5CE /* Frameworks */,
 				6E59D63C23C8B19B00E8A5CE /* Resources */,
-				9A136C534B54571C50444AA3 /* [CP] Embed Pods Frameworks */,
-				80B24CD9B72D839AABDB4EF2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -638,77 +723,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		08D9656D0EA021AB4BF4643B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Whim/Pods-Whim-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4BB7AABBFD0C09B2F42F6899 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhimTests/Pods-WhimTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4FC925F8FC3ABB3179E00CD4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Whim/Pods-Whim-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
-				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Whim/Pods-Whim-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Whim/Pods-Whim-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Whim/Pods-Whim-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		80B24CD9B72D839AABDB4EF2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhimUITests/Pods-WhimUITests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Whim/Pods-Whim-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8F6A1B017A6BE31B4FA93A93 /* [CP] Check Pods Manifest.lock */ = {
@@ -729,36 +758,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		938A054639031BB1E7BFA519 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhimTests/Pods-WhimTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9A136C534B54571C50444AA3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhimUITests/Pods-WhimUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -766,35 +765,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E59D69D23C8D57400E8A5CE /* LoadingViewProtocol.swift in Sources */,
 				6E59D68A23C8C05200E8A5CE /* Router.swift in Sources */,
+				0FA699CB23C92A9100ECED74 /* PrePermissionHandlerProtocol.swift in Sources */,
+				0FA699D923C92C1600ECED74 /* NetworkConnectionType.swift in Sources */,
 				6E59D68623C8BFF400E8A5CE /* HandlerProtocol.swift in Sources */,
-				6E59D6A223C8D71400E8A5CE /* LoadingViewController.swift in Sources */,
+				0FA699B923C91F6200ECED74 /* MapModuleFactoryProtocol.swift in Sources */,
+				0FA699CD23C92AC600ECED74 /* PrePremissionConstants.swift in Sources */,
 				6E59D69423C8D49300E8A5CE /* IntermediableProtocol.swift in Sources */,
 				6E59D68123C8BF9700E8A5CE /* RouterProtocol.swift in Sources */,
+				0FA699D123C92B9100ECED74 /* ReachabilityHandlerProtocol.swift in Sources */,
+				0FA699DB23C92C6800ECED74 /* ReachabilityHandler.swift in Sources */,
 				6E59D69023C8CD4700E8A5CE /* BaseViewController.swift in Sources */,
 				6E59D67023C8BDEB00E8A5CE /* LocationHandlerFactoryProtocol.swift in Sources */,
 				6E59D66A23C8BD6B00E8A5CE /* CoordinatorFactoryProtocol.swift in Sources */,
 				6E59D66E23C8BDBA00E8A5CE /* LocationServiceDelegate.swift in Sources */,
 				6E59D65D23C8BBC200E8A5CE /* BaseCoordinator.swift in Sources */,
 				6E59D69223C8D3DC00E8A5CE /* BaseNavigationController.swift in Sources */,
+				0FA699C523C9291B00ECED74 /* PermissionsCoordinator.swift in Sources */,
 				6E59D68423C8BFE200E8A5CE /* BaseViewProtocol.swift in Sources */,
-				6E59D67523C8BEC600E8A5CE /* LoadingModuleFactoryProtocol.swift in Sources */,
-				6E59D69B23C8D55700E8A5CE /* LoadingCoordinatorOutput.swift in Sources */,
+				0FA699C923C92A5E00ECED74 /* LocationHandlerProtocol.swift in Sources */,
+				0FA699BF23C920B200ECED74 /* NSObject.swift in Sources */,
 				6E59D67B23C8BF2400E8A5CE /* HandlerFactory.swift in Sources */,
+				0FA699BD23C9202300ECED74 /* UIViewController.swift in Sources */,
+				0FA699AD23C91A8E00ECED74 /* MapViewController.swift in Sources */,
 				6E59D67223C8BE3E00E8A5CE /* ReachabilityHandlerFactoryProtocol.swift in Sources */,
+				0FA699AA23C9184500ECED74 /* NavigationCoordinator.swift in Sources */,
+				0FA699A423C9146A00ECED74 /* ApplicationCoordinator.swift in Sources */,
+				0FA699DD23C92E1B00ECED74 /* PrePermissionHandler.swift in Sources */,
+				0FA699B123C91B7100ECED74 /* MapViewProtocol.swift in Sources */,
 				6E59D66323C8BC3400E8A5CE /* LocationHandlerOption.swift in Sources */,
 				6E59D66523C8BD1A00E8A5CE /* ReachabilityHandlerOption.swift in Sources */,
-				6E59D67723C8BEEA00E8A5CE /* StartModuleFactoryProtocol.swift in Sources */,
 				6E59D67D23C8BF2D00E8A5CE /* ModuleFactory.swift in Sources */,
 				6E59D67923C8BF1200E8A5CE /* CoordinatorFactory.swift in Sources */,
 				6E59D65723C8B8A200E8A5CE /* Storyboards.swift in Sources */,
-				6E59D62523C8B19900E8A5CE /* ViewController.swift in Sources */,
+				0FA699E123C92FF400ECED74 /* PrePermissionHandlerFactoryProtocol.swift in Sources */,
+				0FA699A823C9182800ECED74 /* NavigationCoordinatorOutput.swift in Sources */,
 				6E59D62123C8B19900E8A5CE /* AppDelegate.swift in Sources */,
+				0FA699D523C92BDF00ECED74 /* NetworkStatus.swift in Sources */,
 				6E59D62323C8B19900E8A5CE /* SceneDelegate.swift in Sources */,
+				0FA699DF23C92EE700ECED74 /* LocationHandler.swift in Sources */,
+				0FA699CF23C92B5F00ECED74 /* PresentableProtocol.swift in Sources */,
+				0FA699D723C92BFF00ECED74 /* CellularConnectionType.swift in Sources */,
 				6E59D66023C8BBF000E8A5CE /* CoordinatorDelegate.swift in Sources */,
-				6E59D68823C8C00800E8A5CE /* PresentableProtocol.swift in Sources */,
-				6E59D69F23C8D58400E8A5CE /* LoadingCoordinator.swift in Sources */,
+				0FA699C323C9290100ECED74 /* PermissionsCoordinatorOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -971,6 +984,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HQYYQ84UXR;
 				INFOPLIST_FILE = "$(SRCROOT)/Whim/Application/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -990,6 +1004,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HQYYQ84UXR;
 				INFOPLIST_FILE = "$(SRCROOT)/Whim/Application/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

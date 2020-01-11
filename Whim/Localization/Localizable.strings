@@ -5,3 +5,19 @@
   Created by Gica Gugui on 10/01/2020.
   Copyright © 2020 Gica Gugui. All rights reserved.
 */
+
+
+//------------------------------------------------------------------------------------
+
+// Common
+"cancel" = "Cancel";
+"accept" = "Accept";
+
+
+//------------------------------------------------------------------------------------
+
+// Coordinators
+
+// PermissionsCoordinator
+"permissionCoordinator.locationPrePermission.title" = "Location services permission";
+"permissionCoordinator.locationPrePermission.message" = "We need your permission to use localization services so we can provide you the best point of interests.";

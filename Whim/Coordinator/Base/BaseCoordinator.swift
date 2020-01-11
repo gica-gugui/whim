@@ -12,8 +12,6 @@ class BaseCoordinator: CoordinatorDelegate {
     
     func start() { }
     
-    func start(with option: DeepLinkOption) { }
-    
     // add only unique object
     func addDependency(_ coordinator: CoordinatorDelegate) {
         for element in childCoordinators {

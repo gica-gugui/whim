@@ -6,4 +6,10 @@
 //  Copyright © 2020 Gica Gugui. All rights reserved.
 //
 
-// TODO
+import UIKit
+
+protocol CoordinatorFactoryProtocol {
+    func makeNavigationCoordinator(router: RouterProtocol) -> CoordinatorDelegate & NavigationCoordinatorOutput
+    
+    func makePermissionsCoordinator(router: RouterProtocol) -> CoordinatorDelegate & PermissionsCoordinatorOutput
+}

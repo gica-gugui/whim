@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  Whim
 //
 //  Created by Gica Gugui on 10/01/2020.
@@ -8,13 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class MapViewController: BaseViewController, MapViewProtocol, IntermediableProtocol {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    
     }
-
-
 }
-

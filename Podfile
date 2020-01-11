@@ -4,20 +4,16 @@ platform :ios, '12.0'
 use_frameworks!
 
 abstract_target 'WhimPods' do
-	pod 'Alamofire'	
-	pod 'AlamofireNetworkActivityIndicator'
-	pod 'RxSwift'
-	pod 'Swinject'
-	pod 'SwinjectStoryboard'
+	pod 'Alamofire', '~> 4.8'
+	pod 'AlamofireNetworkActivityIndicator', '~> 2.4.0'
+	pod 'RxSwift', '~> 5'
 
 	target 'Whim' do
 		inherit! :search_paths
 			
-		pod 'Alamofire'	
-		pod 'AlamofireNetworkActivityIndicator'
-		pod 'RxSwift'
-		pod 'Swinject'
-		pod 'SwinjectStoryboard'
+		pod 'Alamofire', '~> 4.8'
+		pod 'AlamofireNetworkActivityIndicator', '~> 2.4.0'
+		pod 'RxSwift', '~> 5'
 	end
     
     target 'WhimTests' do

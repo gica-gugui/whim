@@ -6,6 +6,24 @@
 //  Copyright © 2020 Gica Gugui. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-//TODO
+typealias HandlerFactoryProtocol =
+    ReachabilityHandlerFactoryProtocol &
+    LocationHandlerFactoryProtocol &
+    PrePermissionHandlerFactoryProtocol
+    
+
+final class HandlerFactory: HandlerFactoryProtocol {
+    func getPrePermissionHandler() -> PrePermissionHandlerProtocol {
+         return PrePermissionHandler()
+    }
+    
+    func getReachabilityHandler() -> ReachabilityHandlerProtocol {
+        return ReachabilityHandler()
+    }
+ 
+    func getLocationHandler() -> LocationHandlerProtocol {
+        return LocationHandler()
+    }
+}

@@ -6,6 +6,19 @@
 //  Copyright © 2020 Gica Gugui. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-//TODO
+final class CoordinatorFactory: CoordinatorFactoryProtocol {
+    func makeNavigationCoordinator(router: RouterProtocol) -> CoordinatorDelegate & NavigationCoordinatorOutput {
+        return NavigationCoordinator(factory: ModuleFactory(), coordinatorFactory: CoordinatorFactory(), handlerFactory: HandlerFactory(), router: router)
+    }
+    
+    func makePermissionsCoordinator(router: RouterProtocol) -> CoordinatorDelegate & PermissionsCoordinatorOutput {
+        let coordinator = PermissionsCoordinator(
+            handlerFactory: HandlerFactory(),
+            router: router
+        )
+        
+        return coordinator
+    }
+}

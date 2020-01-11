@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import SwinjectStoryboard
 
-typealias ModuleFactoryProtocol = LoadingModuleFactoryProtocol
+typealias ModuleFactoryProtocol = MapModuleFactoryProtocol
 
 final class ModuleFactory: ModuleFactoryProtocol {
-    func makeLoadingOutput() -> LoadingViewProtocol {
-        return LoadingViewController.controllerFromStoryboard(.main)
+    func makeMapOutput() -> MapViewProtocol {
+        return MapViewController()
     }
 }
