@@ -16,20 +16,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqr-3H-INx">
-                                <rect key="frame" x="190.5" y="437.5" width="33.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iIy-WW-b6n">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="aqr-3H-INx" firstAttribute="centerY" secondItem="cF2-mD-Kku" secondAttribute="centerY" id="CBa-wj-Nqn"/>
-                            <constraint firstItem="aqr-3H-INx" firstAttribute="centerX" secondItem="cF2-mD-Kku" secondAttribute="centerX" id="FZz-IA-TZr"/>
+                            <constraint firstItem="iIy-WW-b6n" firstAttribute="top" secondItem="cF2-mD-Kku" secondAttribute="top" id="N53-tI-Evo"/>
+                            <constraint firstAttribute="bottom" secondItem="iIy-WW-b6n" secondAttribute="bottom" id="ThB-2F-4Hs"/>
+                            <constraint firstItem="iIy-WW-b6n" firstAttribute="leading" secondItem="cF2-mD-Kku" secondAttribute="leading" id="saN-Ar-ycK"/>
+                            <constraint firstAttribute="trailing" secondItem="iIy-WW-b6n" secondAttribute="trailing" id="wUW-qN-X3u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a1i-TJ-sHC"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="iIy-WW-b6n" id="uaf-ur-ld9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4K-cw-f5v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

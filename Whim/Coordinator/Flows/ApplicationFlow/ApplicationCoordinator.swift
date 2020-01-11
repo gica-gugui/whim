@@ -29,13 +29,12 @@ final class ApplicationCoordinator: BaseCoordinator {
     private func runMainFlow() {
         let coordinator = coordinatorFactory.makeNavigationCoordinator(router: router)
         
-        // TODO this is not necessary - we never finish main flow as we don't have auth
-//        coordinator.finishFlow = { [weak self, weak coordinator] in
-//            self?.router.popToRootModule(animated: false)
-//
-//            self?.start()
-//            self?.removeDependency(coordinator)
-//        }
+        coordinator.finishFlow = { [weak self, weak coordinator] in
+            self?.router.popToRootModule(animated: false)
+
+            self?.start()
+            self?.removeDependency(coordinator)
+        }
         
         addDependency(coordinator)
         coordinator.start()
