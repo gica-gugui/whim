@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-Whim/Pods-Whim-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework
+${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
