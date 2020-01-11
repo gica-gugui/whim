@@ -21,7 +21,7 @@ final class ModuleFactory: ModuleFactoryProtocol {
         
         api.manager = SessionManagerHandler.sharedInstance(configuration: configuration)
         
-        let wikiRepository = WikiRepository.instance
+        let wikiRepository = WikiRepository()
         wikiRepository.api = api
         
         let viewModel = MapViewModel(wikiRepository: wikiRepository)

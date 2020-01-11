@@ -27,6 +27,4 @@ public class WikiRepository: BaseRepository, WikiRepositoryProtocol {
 
         return api.executeRequest(url: url!, method: .get, headers: headers, body: nil)
     }
-    
-    public static let instance = WikiRepository()
 }
