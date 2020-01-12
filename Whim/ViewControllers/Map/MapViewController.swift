@@ -48,7 +48,7 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
             title: NSLocalizedString("mapAnnotation.title", comment: ""),
             type: .currentLocation,
             coordinate: location.coordinate,
-            color: UIColor.green,
+            color: UIColor.systemGreen,
             pageId: nil)
             
         mapView.addAnnotation(mapAnnotation)

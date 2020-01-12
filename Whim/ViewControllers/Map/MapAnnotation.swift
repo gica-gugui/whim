@@ -13,10 +13,10 @@ class MapAnnotation: NSObject, MKAnnotation {
     let title: String?
     let type: MapViewType
     let coordinate: CLLocationCoordinate2D
-    let color: UIColor?
+    let color: UIColor
     let pageId: Int?
 
-    init(title: String?, type: MapViewType, coordinate: CLLocationCoordinate2D, color: UIColor?, pageId: Int?) {
+    init(title: String?, type: MapViewType, coordinate: CLLocationCoordinate2D, color: UIColor, pageId: Int?) {
         self.title = title
         self.type = type
         self.coordinate = coordinate
@@ -30,7 +30,7 @@ class MapAnnotation: NSObject, MKAnnotation {
         self.title = poi.title
         self.type = .poi
         self.coordinate = CLLocationCoordinate2D(latitude: poi.lat, longitude: poi.lon)
-        self.color = nil
+        self.color = UIColor.systemRed
         self.pageId = poi.pageid
     }
     

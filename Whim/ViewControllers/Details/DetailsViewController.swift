@@ -14,6 +14,7 @@ class DetailsViewController: BaseViewController, MapDetailsViewProtocol {
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var handleView: UIView!
+    @IBOutlet weak var separatorTopConstraint: NSLayoutConstraint!
     
     enum CardViewState {
         case expanded
@@ -32,39 +33,7 @@ class DetailsViewController: BaseViewController, MapDetailsViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        backingImageView.image = snapshotImage
-        
-        // round the handle view
-        handleView.clipsToBounds = true
-        handleView.layer.cornerRadius = 3.0
-        
-        // round the top left and top right corner of card view
-        cardView.clipsToBounds = true
-        cardView.layer.cornerRadius = 10.0
-        cardView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
-        // hide the card view at the bottom when the View first load
-        if let safeAreaHeight = UIApplication.shared.keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height, let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
-            cardViewTopConstraint.constant = safeAreaHeight + bottomPadding
-        }
-        
-        // set dimmerview to transparent
-        dimmerView.alpha = 0.0
-        
-        // dimmerViewTapped() will be called when user tap on the dimmer view
-        let dimmerTap = UITapGestureRecognizer(target: self, action: #selector(dimmerViewTapped(_:)))
-        dimmerView.addGestureRecognizer(dimmerTap)
-        dimmerView.isUserInteractionEnabled = true
-        
-        // add pan gesture recognizer to the view controller's view (the whole screen)
-        let viewPan = UIPanGestureRecognizer(target: self, action: #selector(viewPanned(_:)))
-        
-        // by default iOS will delay the touch before recording the drag/pan information
-        // we want the drag gesture to be recorded down immediately, hence setting no delay
-        viewPan.delaysTouchesBegan = false
-        viewPan.delaysTouchesEnded = false
-
-        self.view.addGestureRecognizer(viewPan)
+        setupViewController()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -113,6 +82,44 @@ class DetailsViewController: BaseViewController, MapDetailsViewProtocol {
             default:
                 break
         }
+    }
+    
+    private func setupViewController() {
+        // set snapshot image
+        backingImageView.image = snapshotImage
+               
+        // round the handle view
+        handleView.clipsToBounds = true
+        handleView.layer.cornerRadius = 3.0
+
+        // round the top left and top right corner of card view
+        cardView.clipsToBounds = true
+        cardView.layer.cornerRadius = 10.0
+        cardView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+
+        // hide the card view at the bottom when the View first load
+        if let safeAreaHeight = UIApplication.shared.keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height, let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
+            cardViewTopConstraint.constant = safeAreaHeight + bottomPadding
+            separatorTopConstraint.constant = cardViewTopConstraint.constant / 2
+        }
+
+        // set dimmerview to transparent
+        dimmerView.alpha = 0.0
+
+        // dimmerViewTapped() will be called when user tap on the dimmer view
+        let dimmerTap = UITapGestureRecognizer(target: self, action: #selector(dimmerViewTapped(_:)))
+        dimmerView.addGestureRecognizer(dimmerTap)
+        dimmerView.isUserInteractionEnabled = true
+
+        // add pan gesture recognizer to the view controller's view (the whole screen)
+        let viewPan = UIPanGestureRecognizer(target: self, action: #selector(viewPanned(_:)))
+
+        // by default iOS will delay the touch before recording the drag/pan information
+        // we want the drag gesture to be recorded down immediately, hence setting no delay
+        viewPan.delaysTouchesBegan = false
+        viewPan.delaysTouchesEnded = false
+
+        self.view.addGestureRecognizer(viewPan)
     }
     
     private func hideCardAndGoBack() {

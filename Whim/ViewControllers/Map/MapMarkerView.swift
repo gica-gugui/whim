@@ -14,10 +14,8 @@ class MapMarkerView: MKMarkerAnnotationView {
         willSet {
             guard let annotation = newValue as? MapAnnotation else { return }
             
-            if annotation.type == .currentLocation {
-                tintColor = annotation.color
-                markerTintColor = annotation.color
-            }
+            tintColor = annotation.color
+            markerTintColor = annotation.color
             
             if let imageName = annotation.imageName {
                 glyphImage = UIImage(named: imageName)
