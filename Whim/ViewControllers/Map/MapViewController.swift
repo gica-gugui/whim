@@ -45,6 +45,7 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
     
     private func setPois(pois:[POI]) {
         var poiAnnotations = [MapAnnotation]()
+        var maxDistance = 0.0
         
         for poi in pois {
             let poiAnnotation = MapAnnotation(
@@ -53,9 +54,21 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
                 coordinate: CLLocationCoordinate2D(latitude: poi.lat, longitude: poi.lon))
             
             poiAnnotations.append(poiAnnotation)
+            
+            if poi.dist > maxDistance {
+                maxDistance = poi.dist
+            }
         }
         
         mapView.addAnnotations(poiAnnotations)
+        
+        guard let centerLocation = self.viewModel.getCenterLocation() else {
+            return
+        }
+        
+        let centerRegion = MKCoordinateRegion(center: centerLocation.coordinate, latitudinalMeters: maxDistance, longitudinalMeters: maxDistance)
+        
+        mapView.setRegion(centerRegion, animated: true)
     }
 }
 
