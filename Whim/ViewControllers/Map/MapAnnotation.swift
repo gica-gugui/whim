@@ -13,11 +13,13 @@ class MapAnnotation: NSObject, MKAnnotation {
     let title: String?
     let type: MapViewType
     let coordinate: CLLocationCoordinate2D
+    let color: UIColor?
 
-    init(title: String?, type: MapViewType, coordinate: CLLocationCoordinate2D) {
+    init(title: String?, type: MapViewType, coordinate: CLLocationCoordinate2D, color: UIColor?) {
         self.title = title
         self.type = type
         self.coordinate = coordinate
+        self.color = color
 
         super.init()
       }
@@ -26,23 +28,10 @@ class MapAnnotation: NSObject, MKAnnotation {
         self.title = poi.title
         self.type = .poi
         self.coordinate = CLLocationCoordinate2D(latitude: poi.lat, longitude: poi.lon)
+        self.color = nil
     }
-
-  var imageName: String? {
-    switch self.type {
-    case .currentLocation:
-        return "Flag"
-    default:
-        return "Pinpoint"
-    }
-  }
-
-  func mapItem() -> MKMapItem {
-    let placemark = MKPlacemark(coordinate: coordinate)
-    let mapItem = MKMapItem(placemark: placemark)
-    mapItem.name = title
     
-    return mapItem
-  }
-
+    var imageName: String? {
+        return type == .currentLocation ? "Flag" : nil
+    }
 }

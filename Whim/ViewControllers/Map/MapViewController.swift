@@ -14,10 +14,19 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
     
     var viewModel: MapViewModelProtocol!
     
+    private var annotationReuseIdentifier = "mapAnnotationIdentifier"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        setupViewController()
         setupViewModel()
+    }
+    
+    private func setupViewController() {
+        mapView.delegate = self
+        
+        mapView.register(MapMarkerView.self, forAnnotationViewWithReuseIdentifier: annotationReuseIdentifier)
     }
     
     private func setupViewModel() {
@@ -34,9 +43,10 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
     
     private func setCurrentLocation(location: CLLocation) {
         let mapAnnotation = MapAnnotation(
-            title: "Current location",
+            title: NSLocalizedString("mapAnnotation.title", comment: ""),
             type: .currentLocation,
-            coordinate: location.coordinate)
+            coordinate: location.coordinate,
+            color: UIColor.green)
             
         mapView.addAnnotation(mapAnnotation)
         
@@ -48,10 +58,7 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
         var maxDistance = 0.0
         
         for poi in pois {
-            let poiAnnotation = MapAnnotation(
-                title: poi.title,
-                type: .poi,
-                coordinate: CLLocationCoordinate2D(latitude: poi.lat, longitude: poi.lon))
+            let poiAnnotation = MapAnnotation.init(poi: poi)!
             
             poiAnnotations.append(poiAnnotation)
             
@@ -73,6 +80,19 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
 }
 
 extension MapViewController: MKMapViewDelegate {
-
+      func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? MapAnnotation else { return nil }
+        
+        var view: MKMarkerAnnotationView
+        
+        guard let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationReuseIdentifier) as? MKMarkerAnnotationView else {
+            return nil
+        }
+        
+        dequeuedView.annotation = annotation
+        view = dequeuedView
+        
+        return view
+      }
 }
 

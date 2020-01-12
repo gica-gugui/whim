@@ -21,3 +21,11 @@
 // PermissionsCoordinator
 "permissionCoordinator.locationPrePermission.title" = "Location services permission";
 "permissionCoordinator.locationPrePermission.message" = "We need your permission to use localization services so we can provide you the best point of interests.";
+
+
+//------------------------------------------------------------------------------------
+
+// Views
+
+// MapAnnotation
+"mapAnnotation.title" = "You are here";
