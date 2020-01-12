@@ -60,6 +60,14 @@
                                 <rect key="frame" x="0.0" y="74" width="414" height="822"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYO-5l-Tvz">
+                                <rect key="frame" x="182" y="58" width="50" height="6"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="6" id="8da-B2-gLW"/>
+                                    <constraint firstAttribute="width" constant="50" id="waM-Lb-N1c"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -68,8 +76,10 @@
                             <constraint firstItem="fiW-fD-mRy" firstAttribute="trailing" secondItem="Uaz-P8-eJ4" secondAttribute="trailing" id="C3F-qC-cxw"/>
                             <constraint firstItem="Uaz-P8-eJ4" firstAttribute="top" secondItem="fiW-fD-mRy" secondAttribute="top" constant="30" id="H9D-m5-fto"/>
                             <constraint firstItem="vMQ-o2-bfL" firstAttribute="top" secondItem="ZL1-Pr-4gM" secondAttribute="top" id="KhK-Eh-n64"/>
+                            <constraint firstItem="AYO-5l-Tvz" firstAttribute="centerX" secondItem="ZL1-Pr-4gM" secondAttribute="centerX" id="Q7x-Jx-M59"/>
                             <constraint firstItem="Uaz-P8-eJ4" firstAttribute="leading" secondItem="fiW-fD-mRy" secondAttribute="leading" id="Qny-XH-t5X"/>
                             <constraint firstAttribute="bottom" secondItem="Nze-kU-atq" secondAttribute="bottom" id="bLU-Gy-2CG"/>
+                            <constraint firstItem="Uaz-P8-eJ4" firstAttribute="top" secondItem="AYO-5l-Tvz" secondAttribute="bottom" constant="10" id="d0m-Lq-WjH"/>
                             <constraint firstAttribute="bottom" secondItem="vMQ-o2-bfL" secondAttribute="bottom" id="jRD-el-bHD"/>
                             <constraint firstItem="vMQ-o2-bfL" firstAttribute="leading" secondItem="fiW-fD-mRy" secondAttribute="leading" id="kTJ-Dk-mri"/>
                             <constraint firstAttribute="bottom" secondItem="Uaz-P8-eJ4" secondAttribute="bottom" id="tUP-ej-Yvf"/>
@@ -83,6 +93,7 @@
                         <outlet property="cardView" destination="Uaz-P8-eJ4" id="MSY-ty-DoQ"/>
                         <outlet property="cardViewTopConstraint" destination="H9D-m5-fto" id="mOl-7U-hD0"/>
                         <outlet property="dimmerView" destination="Nze-kU-atq" id="zKL-jz-56X"/>
+                        <outlet property="handleView" destination="AYO-5l-Tvz" id="M0l-cl-vWw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0zz-s2-Xvo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -92,7 +103,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1567" y="-66"/>
+            <point key="canvasLocation" x="1566.6666666666667" y="-66.294642857142861"/>
         </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="86M-L1-0ir">
