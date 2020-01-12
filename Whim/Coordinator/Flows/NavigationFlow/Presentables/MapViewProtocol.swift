@@ -9,5 +9,7 @@
 import CoreLocation
 
 protocol MapViewProtocol: BaseViewProtocol {
+    var onPOIDetailsTap: ((_ annotation: MapAnnotation) -> Void)? { get set }
+    
     func locationObtained(location: CLLocation)
 }

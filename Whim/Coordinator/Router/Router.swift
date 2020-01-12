@@ -30,6 +30,13 @@ final class Router: NSObject, RouterProtocol {
         rootController?.present(controller, animated: animated, completion: nil)
     }
     
+    func presentWithSnapshot(_ module: PresentableProtocol?) {
+        guard let controller = module?.toPresent() else { return }
+        controller.modalPresentationStyle = .fullScreen
+        
+        self.rootController?.present(controller, animated: false, completion: nil)
+    }
+    
     func dismissModule() {
         dismissModule(animated: true, completion: nil)
     }
@@ -97,6 +104,10 @@ final class Router: NSObject, RouterProtocol {
                 runCompletion(for: controller)
             }
         }
+    }
+    
+    func snapshot() -> UIImage? {
+        return self.rootController?.viewControllers.last?.view.asImage()
     }
     
     private func runCompletion(for controller: UIViewController) {

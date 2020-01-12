@@ -30,6 +30,8 @@
 		0F4A1D2023CB2625007FF59D /* MapMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A1D1F23CB2625007FF59D /* MapMarkerView.swift */; };
 		0F4A1D2323CB3936007FF59D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A1D2223CB3936007FF59D /* DetailsViewController.swift */; };
 		0F4A1D2523CB3C69007FF59D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A1D2423CB3C69007FF59D /* UIView.swift */; };
+		0F4A1D2723CB6638007FF59D /* MapDetailsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A1D2623CB6638007FF59D /* MapDetailsViewProtocol.swift */; };
+		0F4A1D2923CB667A007FF59D /* MapDetailsModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A1D2823CB667A007FF59D /* MapDetailsModuleFactoryProtocol.swift */; };
 		0FA699A423C9146A00ECED74 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699A323C9146A00ECED74 /* ApplicationCoordinator.swift */; };
 		0FA699A823C9182800ECED74 /* NavigationCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699A723C9182800ECED74 /* NavigationCoordinatorOutput.swift */; };
 		0FA699AA23C9184500ECED74 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699A923C9184500ECED74 /* NavigationCoordinator.swift */; };
@@ -124,6 +126,8 @@
 		0F4A1D1F23CB2625007FF59D /* MapMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerView.swift; sourceTree = "<group>"; };
 		0F4A1D2223CB3936007FF59D /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		0F4A1D2423CB3C69007FF59D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		0F4A1D2623CB6638007FF59D /* MapDetailsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailsViewProtocol.swift; sourceTree = "<group>"; };
+		0F4A1D2823CB667A007FF59D /* MapDetailsModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailsModuleFactoryProtocol.swift; sourceTree = "<group>"; };
 		0FA699A323C9146A00ECED74 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		0FA699A723C9182800ECED74 /* NavigationCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorOutput.swift; sourceTree = "<group>"; };
 		0FA699A923C9184500ECED74 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
@@ -373,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				0FA699B023C91B7100ECED74 /* MapViewProtocol.swift */,
+				0F4A1D2623CB6638007FF59D /* MapDetailsViewProtocol.swift */,
 			);
 			path = Presentables;
 			sourceTree = "<group>";
@@ -641,6 +646,7 @@
 			isa = PBXGroup;
 			children = (
 				0FA699B823C91F6200ECED74 /* MapModuleFactoryProtocol.swift */,
+				0F4A1D2823CB667A007FF59D /* MapDetailsModuleFactoryProtocol.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -949,6 +955,7 @@
 				6E59D69423C8D49300E8A5CE /* IntermediableProtocol.swift in Sources */,
 				6E59D68123C8BF9700E8A5CE /* RouterProtocol.swift in Sources */,
 				0F4A1CF723C9E929007FF59D /* SessionManagerHandler.swift in Sources */,
+				0F4A1D2923CB667A007FF59D /* MapDetailsModuleFactoryProtocol.swift in Sources */,
 				0FA699D123C92B9100ECED74 /* ReachabilityHandlerProtocol.swift in Sources */,
 				0FA699DB23C92C6800ECED74 /* ReachabilityHandler.swift in Sources */,
 				6E59D69023C8CD4700E8A5CE /* BaseViewController.swift in Sources */,
@@ -967,6 +974,7 @@
 				0FA699BD23C9202300ECED74 /* UIViewController.swift in Sources */,
 				0FA699AD23C91A8E00ECED74 /* MapViewController.swift in Sources */,
 				6E59D67223C8BE3E00E8A5CE /* ReachabilityHandlerFactoryProtocol.swift in Sources */,
+				0F4A1D2723CB6638007FF59D /* MapDetailsViewProtocol.swift in Sources */,
 				0FA699AA23C9184500ECED74 /* NavigationCoordinator.swift in Sources */,
 				0F4A1D1A23C9FCFB007FF59D /* POIQuery.swift in Sources */,
 				0F4A1D0C23C9EE7B007FF59D /* BaseRepository.swift in Sources */,

@@ -8,19 +8,19 @@
 
 import UIKit
 
-class DetailsViewController: BaseViewController {
+class DetailsViewController: BaseViewController, MapDetailsViewProtocol {
     @IBOutlet weak var backingImageView: UIImageView!
     @IBOutlet weak var dimmerView: UIView!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var handleView: UIView!
     
-    var backingImage: UIImage?
-    
     enum CardViewState {
         case expanded
         case normal
     }
+    
+    var snapshotImage: UIImage?
     
     // default card view state is normal
     var cardViewState : CardViewState = .normal
@@ -32,7 +32,7 @@ class DetailsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        backingImageView.image = backingImage
+        backingImageView.image = snapshotImage
         
         // round the handle view
         handleView.clipsToBounds = true
@@ -68,9 +68,9 @@ class DetailsViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-      super.viewDidAppear(animated)
+        super.viewDidAppear(animated)
 
-      showCard()
+        showCard()
     }
     
     @IBAction func dimmerViewTapped(_ sender: UITapGestureRecognizer) {
@@ -78,44 +78,44 @@ class DetailsViewController: BaseViewController {
     }
     
     @IBAction func viewPanned(_ panRecognizer: UIPanGestureRecognizer) {
-      let velocity = panRecognizer.velocity(in: self.view)
-      let translation = panRecognizer.translation(in: self.view)
+        let velocity = panRecognizer.velocity(in: self.view)
+        let translation = panRecognizer.translation(in: self.view)
       
-      switch panRecognizer.state {
-      case .began:
-        cardPanStartingTopConstant = cardViewTopConstraint.constant
-        
-      case .changed:
-        if self.cardPanStartingTopConstant + translation.y > 30.0 {
-          self.cardViewTopConstraint.constant = self.cardPanStartingTopConstant + translation.y
-        }
-        
-        // change the dimmer view alpha based on how much user has dragged
-        dimmerView.alpha = dimAlphaWithCardTopConstraint(value: self.cardViewTopConstraint.constant)
+        switch panRecognizer.state {
+            case .began:
+                cardPanStartingTopConstant = cardViewTopConstraint.constant
+            
+            case .changed:
+                if self.cardPanStartingTopConstant + translation.y > 30.0 {
+                    self.cardViewTopConstraint.constant = self.cardPanStartingTopConstant + translation.y
+            }
+            
+            // change the dimmer view alpha based on how much user has dragged
+            dimmerView.alpha = dimAlphaWithCardTopConstraint(value: self.cardViewTopConstraint.constant)
 
-      case .ended:
-        if velocity.y > 1500.0 {
-          hideCardAndGoBack()
-          return
+            case .ended:
+                if velocity.y > 1500.0 {
+                    hideCardAndGoBack()
+                    return
+                }
+            
+                if let safeAreaHeight = UIApplication.shared.keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height,
+                    let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
+                  
+                    if self.cardViewTopConstraint.constant < (safeAreaHeight + bottomPadding) * 0.25 {
+                    showCard(atState: .expanded)
+                    } else if self.cardViewTopConstraint.constant < (safeAreaHeight) - 70 {
+                        showCard(atState: .normal)
+                    } else {
+                        hideCardAndGoBack()
+                    }
+                }
+            default:
+                break
         }
-        
-        if let safeAreaHeight = UIApplication.shared.keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height,
-          let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
-          
-          if self.cardViewTopConstraint.constant < (safeAreaHeight + bottomPadding) * 0.25 {
-            showCard(atState: .expanded)
-          } else if self.cardViewTopConstraint.constant < (safeAreaHeight) - 70 {
-            showCard(atState: .normal)
-          } else {
-            hideCardAndGoBack()
-          }
-        }
-      default:
-        break
-      }
     }
+    
     private func hideCardAndGoBack() {
-          
         // ensure there's no pending layout changes before animation runs
         self.view.layoutIfNeeded()
         
@@ -157,72 +157,71 @@ class DetailsViewController: BaseViewController {
 
     // default to show card at normal state, if showCard() is called without parameter
     private func showCard(atState: CardViewState = .normal) {
-       
-      // ensure there's no pending layout changes before animation runs
-      self.view.layoutIfNeeded()
-      
-      // set the new top constraint value for card view
-      // card view won't move up just yet, we need to call layoutIfNeeded()
-      // to tell the app to refresh the frame/position of card view
-      if let safeAreaHeight = UIApplication.shared.keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height,
-        let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
-        
-        if atState == .expanded {
-          // if state is expanded, top constraint is 30pt away from safe area top
-          cardViewTopConstraint.constant = 30.0
-        } else {
-          cardViewTopConstraint.constant = (safeAreaHeight + bottomPadding) / 2.0
-        }
-        
-        cardPanStartingTopConstant = cardViewTopConstraint.constant
-      }
-      
-      // move card up from bottom
-      // create a new property animator
-      let showCard = UIViewPropertyAnimator(duration: 0.25, curve: .easeIn, animations: {
+        // ensure there's no pending layout changes before animation runs
         self.view.layoutIfNeeded()
-      })
       
-      // show dimmer view
-      // this will animate the dimmerView alpha together with the card move up animation
-      showCard.addAnimations {
-        self.dimmerView.alpha = 0.7
-      }
+        // set the new top constraint value for card view
+        // card view won't move up just yet, we need to call layoutIfNeeded()
+        // to tell the app to refresh the frame/position of card view
+        if let safeAreaHeight = UIApplication.shared.keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height,
+            let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
+        
+            if atState == .expanded {
+                // if state is expanded, top constraint is 30pt away from safe area top
+                cardViewTopConstraint.constant = 30.0
+            } else {
+                cardViewTopConstraint.constant = (safeAreaHeight + bottomPadding) / 2.0
+            }
+        
+            cardPanStartingTopConstant = cardViewTopConstraint.constant
+        }
       
-      // run the animation
-      showCard.startAnimation()
+        // move card up from bottom
+        // create a new property animator
+        let showCard = UIViewPropertyAnimator(duration: 0.25, curve: .easeIn, animations: {
+            self.view.layoutIfNeeded()
+        })
+      
+        // show dimmer view
+        // this will animate the dimmerView alpha together with the card move up animation
+        showCard.addAnimations {
+            self.dimmerView.alpha = 0.7
+        }
+      
+        // run the animation
+        showCard.startAnimation()
     }
     
     private func dimAlphaWithCardTopConstraint(value: CGFloat) -> CGFloat {
-      let fullDimAlpha : CGFloat = 0.7
+        let fullDimAlpha : CGFloat = 0.7
       
-      // ensure safe area height and safe area bottom padding is not nil
-      guard let safeAreaHeight = UIApplication.shared.keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height,
-        let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom else {
-        return fullDimAlpha
-      }
+        // ensure safe area height and safe area bottom padding is not nil
+        guard let safeAreaHeight = UIApplication.shared.keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height,
+            let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom else {
+                return fullDimAlpha
+        }
       
-      // when card view top constraint value is equal to this,
-      // the dimmer view alpha is dimmest (0.7)
-      let fullDimPosition = (safeAreaHeight + bottomPadding) / 2.0
+        // when card view top constraint value is equal to this,
+        // the dimmer view alpha is dimmest (0.7)
+        let fullDimPosition = (safeAreaHeight + bottomPadding) / 2.0
       
-      // when card view top constraint value is equal to this,
-      // the dimmer view alpha is lightest (0.0)
-      let noDimPosition = safeAreaHeight + bottomPadding
+        // when card view top constraint value is equal to this,
+        // the dimmer view alpha is lightest (0.0)
+        let noDimPosition = safeAreaHeight + bottomPadding
       
-      // if card view top constraint is lesser than fullDimPosition
-      // it is dimmest
-      if value < fullDimPosition {
-        return fullDimAlpha
-      }
+        // if card view top constraint is lesser than fullDimPosition
+        // it is dimmest
+        if value < fullDimPosition {
+            return fullDimAlpha
+        }
       
-      // if card view top constraint is more than noDimPosition
-      // it is dimmest
-      if value > noDimPosition {
-        return 0.0
-      }
+        // if card view top constraint is more than noDimPosition
+        // it is dimmest
+        if value > noDimPosition {
+            return 0.0
+        }
       
-      // else return an alpha value in between 0.0 and 0.7 based on the top constraint value
-      return fullDimAlpha * 1 - ((value - fullDimPosition) / fullDimPosition)
+        // else return an alpha value in between 0.0 and 0.7 based on the top constraint value
+        return fullDimAlpha * 1 - ((value - fullDimPosition) / fullDimPosition)
     }
 }

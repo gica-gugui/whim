@@ -6,10 +6,13 @@
 //  Copyright © 2020 Gica Gugui. All rights reserved.
 //
 
+import UIKit
+
 protocol RouterProtocol: PresentableProtocol {
     
     func present(_ module: PresentableProtocol?)
     func present(_ module: PresentableProtocol?, animated: Bool)
+    func presentWithSnapshot(_ module: PresentableProtocol?)
     
     func push(_ module: PresentableProtocol?)
     func push(_ module: PresentableProtocol?, animated: Bool)
@@ -26,4 +29,6 @@ protocol RouterProtocol: PresentableProtocol {
     func setRootModule(_ module: PresentableProtocol?, hideBar: Bool)
     
     func popToRootModule(animated: Bool)
+    
+    func snapshot() -> UIImage?
 }

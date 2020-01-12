@@ -12,6 +12,8 @@ import MapKit
 class MapViewController: BaseViewController, MapViewProtocol, IntermediableProtocol {
     @IBOutlet private weak var mapView: MKMapView!
     
+    var onPOIDetailsTap: ((_ annotation: MapAnnotation) -> Void)?
+    
     var viewModel: MapViewModelProtocol!
     
     private var annotationReuseIdentifier = "mapAnnotationIdentifier"
@@ -46,7 +48,8 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
             title: NSLocalizedString("mapAnnotation.title", comment: ""),
             type: .currentLocation,
             coordinate: location.coordinate,
-            color: UIColor.green)
+            color: UIColor.green,
+            pageId: nil)
             
         mapView.addAnnotation(mapAnnotation)
         
@@ -95,20 +98,12 @@ extension MapViewController: MKMapViewDelegate {
         return view
       }
     
-    //TODO redo this with coordinator
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        let detailsViewcontroller = DetailsViewController.controllerFromStoryboard(.main)
+        guard let mapAnnotation = view.annotation as? MapAnnotation else {
+            return
+        }
         
-        // set the modal presentation to full screen, in iOS 13, its no longer full screen by default
-        detailsViewcontroller.modalPresentationStyle = .fullScreen
-        
-        // Delay the capture of snapshot by 0.1 seconds
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
-            detailsViewcontroller.backingImage = self.navigationController?.view.asImage()
-          
-            // present the view controller modally without animation
-            self.present(detailsViewcontroller, animated: false, completion: nil)
-        })
+        onPOIDetailsTap?(mapAnnotation)
     }
 }
 
