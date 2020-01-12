@@ -37,6 +37,63 @@
             </objects>
             <point key="canvasLocation" x="606" y="-75"/>
         </scene>
+        <!--Details View Controller-->
+        <scene sceneID="ZVp-M1-ExB">
+            <objects>
+                <viewController storyboardIdentifier="DetailsViewController" id="zfJ-eh-FlC" customClass="DetailsViewController" customModule="Whim" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZL1-Pr-4gM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vMQ-o2-bfL">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nze-kU-atq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="glb-7H-kIS" appends="YES" id="3lF-IO-5qn"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uaz-P8-eJ4">
+                                <rect key="frame" x="0.0" y="74" width="414" height="822"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Nze-kU-atq" firstAttribute="leading" secondItem="fiW-fD-mRy" secondAttribute="leading" id="30r-Lq-wMV"/>
+                            <constraint firstItem="fiW-fD-mRy" firstAttribute="trailing" secondItem="vMQ-o2-bfL" secondAttribute="trailing" id="4T6-G1-0oq"/>
+                            <constraint firstItem="fiW-fD-mRy" firstAttribute="trailing" secondItem="Uaz-P8-eJ4" secondAttribute="trailing" id="C3F-qC-cxw"/>
+                            <constraint firstItem="Uaz-P8-eJ4" firstAttribute="top" secondItem="fiW-fD-mRy" secondAttribute="top" constant="30" id="H9D-m5-fto"/>
+                            <constraint firstItem="vMQ-o2-bfL" firstAttribute="top" secondItem="ZL1-Pr-4gM" secondAttribute="top" id="KhK-Eh-n64"/>
+                            <constraint firstItem="Uaz-P8-eJ4" firstAttribute="leading" secondItem="fiW-fD-mRy" secondAttribute="leading" id="Qny-XH-t5X"/>
+                            <constraint firstAttribute="bottom" secondItem="Nze-kU-atq" secondAttribute="bottom" id="bLU-Gy-2CG"/>
+                            <constraint firstAttribute="bottom" secondItem="vMQ-o2-bfL" secondAttribute="bottom" id="jRD-el-bHD"/>
+                            <constraint firstItem="vMQ-o2-bfL" firstAttribute="leading" secondItem="fiW-fD-mRy" secondAttribute="leading" id="kTJ-Dk-mri"/>
+                            <constraint firstAttribute="bottom" secondItem="Uaz-P8-eJ4" secondAttribute="bottom" id="tUP-ej-Yvf"/>
+                            <constraint firstItem="fiW-fD-mRy" firstAttribute="trailing" secondItem="Nze-kU-atq" secondAttribute="trailing" id="tkl-bO-xgJ"/>
+                            <constraint firstItem="Nze-kU-atq" firstAttribute="top" secondItem="ZL1-Pr-4gM" secondAttribute="top" id="uWD-7j-Eae"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fiW-fD-mRy"/>
+                    </view>
+                    <connections>
+                        <outlet property="backingImageView" destination="vMQ-o2-bfL" id="5uX-zR-JaT"/>
+                        <outlet property="cardView" destination="Uaz-P8-eJ4" id="MSY-ty-DoQ"/>
+                        <outlet property="cardViewTopConstraint" destination="H9D-m5-fto" id="mOl-7U-hD0"/>
+                        <outlet property="dimmerView" destination="Nze-kU-atq" id="zKL-jz-56X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0zz-s2-Xvo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="glb-7H-kIS">
+                    <connections>
+                        <action selector="dimmerViewTapped:" destination="zfJ-eh-FlC" id="Y6K-nM-dP6"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1567" y="-66"/>
+        </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="86M-L1-0ir">
             <objects>

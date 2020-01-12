@@ -94,5 +94,21 @@ extension MapViewController: MKMapViewDelegate {
         
         return view
       }
+    
+    //TODO redo this with coordinator
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let detailsViewcontroller = DetailsViewController.controllerFromStoryboard(.main)
+        
+        // set the modal presentation to full screen, in iOS 13, its no longer full screen by default
+        detailsViewcontroller.modalPresentationStyle = .fullScreen
+        
+        // Delay the capture of snapshot by 0.1 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
+            detailsViewcontroller.backingImage = self.navigationController?.view.asImage()
+          
+            // present the view controller modally without animation
+            self.present(detailsViewcontroller, animated: false, completion: nil)
+        })
+    }
 }
 

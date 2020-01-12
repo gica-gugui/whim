@@ -17,10 +17,6 @@ class MapMarkerView: MKMarkerAnnotationView {
             if annotation.type == .currentLocation {
                 tintColor = annotation.color
                 markerTintColor = annotation.color
-            } else {
-                canShowCallout = true
-                calloutOffset = CGPoint(x: -5, y: 5)
-                rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             }
             
             if let imageName = annotation.imageName {
