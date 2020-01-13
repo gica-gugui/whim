@@ -153,9 +153,11 @@ extension MapViewController: MKMapViewDelegate {
             return
         }
         
+        centerMapToAnnotation(annotation: annotation)
+        
         self.resetDetailsView()
         
-        self.viewModel.loadPointOfInterest(mapAnnotation: annotation)
+        viewModel.loadPointOfInterest(mapAnnotation: annotation)
         
         showCard()
     }
@@ -164,6 +166,20 @@ extension MapViewController: MKMapViewDelegate {
         for annotation in mapView.selectedAnnotations {
             mapView.deselectAnnotation(annotation, animated: true)
         }
+    }
+    
+    private func centerMapToAnnotation(annotation: MapAnnotation) {
+        guard let distance = viewModel.getAnnotationsMaxDistance() else {
+            return
+        }
+        
+        let oldRegion = mapView.regionThatFits(MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: distance, longitudinalMeters: distance))
+        let centerPointOldRegion = oldRegion.center
+        
+        let centerPointNewRegion = CLLocationCoordinate2D.init(latitude: centerPointOldRegion.latitude - oldRegion.span.latitudeDelta / 4.0, longitude: centerPointOldRegion.longitude)
+        let newRegion = MKCoordinateRegion(center: centerPointNewRegion, span: oldRegion.span)
+        
+        mapView.setRegion(newRegion, animated: true)
     }
 }
 

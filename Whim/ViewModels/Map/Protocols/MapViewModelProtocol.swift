@@ -18,5 +18,6 @@ protocol MapViewModelProtocol {
     
     func getCenterLocation() -> CLLocation?
     func getAnnotationsRegion() -> MKCoordinateRegion?
-    func getWikipediaLink() -> String? 
+    func getWikipediaLink() -> String?
+    func getAnnotationsMaxDistance() -> Double?
 }

@@ -19,6 +19,7 @@ class MapViewModel: MapViewModelProtocol {
     private var disposeBag = DisposeBag()
     
     private var centerLocation: CLLocation?
+    private var annotationsMaxDistance: Double?
     private var mapAnnotations = [MapAnnotation]()
     private var pointOfInterest: POIDetails?
     
@@ -82,6 +83,10 @@ class MapViewModel: MapViewModelProtocol {
         return self.centerLocation
     }
     
+    func getAnnotationsMaxDistance() -> Double? {
+        return self.annotationsMaxDistance
+    }
+    
     func getAnnotationsRegion() -> MKCoordinateRegion? {
         var maxDistance = 0.0
         
@@ -94,6 +99,8 @@ class MapViewModel: MapViewModelProtocol {
         guard let centerLocation = self.centerLocation else {
             return nil
         }
+        
+        self.annotationsMaxDistance = maxDistance
         
         return MKCoordinateRegion(center: centerLocation.coordinate, latitudinalMeters: maxDistance, longitudinalMeters: maxDistance)
     }
