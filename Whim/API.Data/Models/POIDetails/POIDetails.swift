@@ -21,7 +21,7 @@ public struct POIDetails: Codable {
     public var length: Int
     public var description: String?
     public var descriptionSource: String?
-    public var images: [POIImage]
+    public var images: [POIImage]?
     
     enum CodingKeys: String, CodingKey {
         case pageid = "pageid"
@@ -52,10 +52,10 @@ public struct POIDetails: Codable {
         self.length = 0
         self.description = nil
         self.descriptionSource = nil
-        self.images = [POIImage]()
+        self.images = nil
     }
     
-    public init(pageid: Int, ns: Int, title: String, contentModel: String, pageLanguage: String, pageLanguageHtmlCode: String, pageLanguageDir: String, touched: Date?, lastRevId: Int, length: Int, description: String?, descriptionSource: String?, images: [POIImage]) {
+    public init(pageid: Int, ns: Int, title: String, contentModel: String, pageLanguage: String, pageLanguageHtmlCode: String, pageLanguageDir: String, touched: Date?, lastRevId: Int, length: Int, description: String?, descriptionSource: String?, images: [POIImage]?) {
         self.pageid = pageid
         self.ns = ns
         self.title = title
@@ -86,7 +86,7 @@ public struct POIDetails: Codable {
         let length = try container.decode(Int.self, forKey: .length)
         let description = try container.decodeIfPresent(String.self, forKey: .description)
         let descriptionSource = try container.decodeIfPresent(String.self, forKey: .descriptionSource)
-        let images = try container.decode([POIImage].self, forKey: .images)
+        let images = try container.decodeIfPresent([POIImage].self, forKey: .images)
         
         self.init(pageid: pageid, ns: ns, title: title, contentModel: contentModel, pageLanguage: pageLanguage, pageLanguageHtmlCode: pageLanguageHtmlCode, pageLanguageDir: pageLanguageDir, touched: touched, lastRevId: lastRevId, length: length, description: description, descriptionSource: descriptionSource, images: images)
     }
@@ -106,6 +106,6 @@ public struct POIDetails: Codable {
         try container.encode(length, forKey: .length)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(descriptionSource, forKey: .descriptionSource)
-        try container.encode(images, forKey: .images)
+        try container.encodeIfPresent(images, forKey: .images)
     }
 }

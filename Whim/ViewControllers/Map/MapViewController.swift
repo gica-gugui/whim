@@ -149,11 +149,16 @@ extension MapViewController: MKMapViewDelegate {
       }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let annotation = view.annotation as? MapAnnotation, annotation.type == .poi else {
+        guard let annotation = view.annotation as? MapAnnotation else {
             return
         }
         
         centerMapToAnnotation(annotation: annotation)
+        
+        // center the map for any annotation tapped, including the you are here one, but open modal only for POI
+        guard annotation.type == .poi else {
+            return
+        }
         
         self.resetDetailsView()
         

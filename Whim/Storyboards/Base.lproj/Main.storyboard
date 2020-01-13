@@ -101,7 +101,7 @@
                                     <constraint firstItem="INn-EI-CON" firstAttribute="leading" secondItem="qHL-Lv-HiA" secondAttribute="leading" constant="10" id="Bsv-Pk-ueC"/>
                                     <constraint firstItem="swh-HA-8lW" firstAttribute="leading" secondItem="qHL-Lv-HiA" secondAttribute="leading" constant="10" id="EfW-1K-AKe"/>
                                     <constraint firstAttribute="trailing" secondItem="drj-Ac-LXt" secondAttribute="trailing" constant="10" id="LIn-uT-TvT"/>
-                                    <constraint firstItem="gEd-7S-iX2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="drj-Ac-LXt" secondAttribute="bottom" priority="250" constant="10" id="MIN-SB-4bK"/>
+                                    <constraint firstItem="gEd-7S-iX2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="drj-Ac-LXt" secondAttribute="bottom" priority="250" constant="20" id="MIN-SB-4bK"/>
                                     <constraint firstItem="MLj-IV-VYo" firstAttribute="top" secondItem="Iks-sX-4pG" secondAttribute="bottom" priority="750" constant="20" id="Zim-YA-JCZ"/>
                                     <constraint firstItem="Iks-sX-4pG" firstAttribute="leading" secondItem="qHL-Lv-HiA" secondAttribute="leading" constant="10" id="aTF-Hh-od4"/>
                                     <constraint firstAttribute="trailing" secondItem="MLj-IV-VYo" secondAttribute="trailing" constant="10" id="dc3-7S-2UK"/>
