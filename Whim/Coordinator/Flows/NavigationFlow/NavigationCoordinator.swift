@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import CoreLocation
 
 class NavigationCoordinator: BaseCoordinator, NavigationCoordinatorOutput {
@@ -40,8 +41,12 @@ class NavigationCoordinator: BaseCoordinator, NavigationCoordinatorOutput {
     private func showMap() {
         mapView = factory.makeMapOutput()
  
-        mapView.onPOIDetailsTap = { [weak self] mapAnnotation in
+        mapView.openWikipediaArticle = { urlString in
+            guard let url = URL.init(string: urlString) else {
+                return
+            }
             
+            UIApplication.shared.open(url)
         }
         
         router.setRootModule(mapView, hideBar: true)

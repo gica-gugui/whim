@@ -12,14 +12,15 @@ import RxSwift
 
 class MapViewModel: MapViewModelProtocol {
     var onPoisLoaded: ((_ mapAnnotations: [MapAnnotation]) -> Void)?
+    var onPoiLoaded: ((_ poi: POIDetails) -> Void)?
     
     private var wikiRepository: WikiRepositoryProtocol
     
     private var disposeBag = DisposeBag()
     
     private var centerLocation: CLLocation?
-    private var mapAnnotation: MapAnnotation?
     private var mapAnnotations = [MapAnnotation]()
+    private var pointOfInterest: POIDetails?
     
     init(wikiRepository: WikiRepository) {
         self.wikiRepository = wikiRepository
@@ -54,18 +55,27 @@ class MapViewModel: MapViewModelProtocol {
             return
         }
         
-        self.mapAnnotation = mapAnnotation
-        
         _ = wikiRepository.getPOI(pageId: pageId)
             .subscribeOn(InfraHelper.backgroundWorkScheduler)
             .do(onError: { error in
                 print(error)
             })
             .observeOn(MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] poiDetails in
-                print(poiDetails)
+            .subscribe(onNext: { [weak self] result in
+                let poi = result.query.pages.poiDetails
+                
+                self?.pointOfInterest = poi
+                self?.onPoiLoaded?(poi)
             })
             .disposed(by: disposeBag)
+    }
+    
+    func getWikipediaLink() -> String? {
+        guard let pointOfInterest = self.pointOfInterest, let titleUrlEncoded = pointOfInterest.title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+            return nil
+        }
+        
+        return "https://en.wikipedia.org/wiki/\(titleUrlEncoded)"
     }
     
     func getCenterLocation() -> CLLocation? {

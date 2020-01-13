@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import RxSwift
 
 class MapViewController: BaseViewController, MapViewProtocol, IntermediableProtocol {
     @IBOutlet weak var mapView: MKMapView!
@@ -17,7 +18,14 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
     @IBOutlet weak var handleView: UIView!
     @IBOutlet weak var separatorTopConstraint: NSLayoutConstraint!
     
-    var onPOIDetailsTap: ((_ annotation: MapAnnotation) -> Void)?
+    @IBOutlet weak var poiTitleLabel: UILabel!
+    @IBOutlet weak var poiDescriptionLabel: UILabel!
+    @IBOutlet weak var poiImagesCollectionView: UICollectionView!
+    @IBOutlet weak var poiLinkButton: UIButton!
+    @IBOutlet weak var poiNavigationButton: UIButton!
+    @IBOutlet weak var poiRoutesButton: UIButton!
+    
+    var openWikipediaArticle: ((_ url: String) -> Void)?
     
     var viewModel: MapViewModelProtocol!
     
@@ -80,6 +88,10 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
         self.viewModel.onPoisLoaded = { [weak self] mapAnnotations in
              self?.setMapAnnotations(annotations: mapAnnotations)
         }
+        
+        self.viewModel.onPoiLoaded = { [weak self] poi in
+            self?.setPOIDetails(poi: poi)
+        }
     }
     
     func locationObtained(location: CLLocation) {
@@ -111,6 +123,12 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
         
         self.mapView.setRegion(annotationsRegion, animated: true)
     }
+    
+    private func setPOIDetails(poi: POIDetails) {
+        self.poiTitleLabel.text = poi.title
+        self.poiDescriptionLabel.text = poi.description
+        
+    }
 }
 
 // MapViewDelegate
@@ -134,6 +152,8 @@ extension MapViewController: MKMapViewDelegate {
         guard let annotation = view.annotation as? MapAnnotation, annotation.type == .poi else {
             return
         }
+        
+        self.resetDetailsView()
         
         self.viewModel.loadPointOfInterest(mapAnnotation: annotation)
         
@@ -189,6 +209,14 @@ extension MapViewController {
             default:
                 break
         }
+    }
+    
+    @IBAction private func poiLinkButtonTap(_ sender: Any) {
+        guard let wikiUrl = self.viewModel.getWikipediaLink() else {
+            return
+        }
+        
+        self.openWikipediaArticle?(wikiUrl)
     }
     
     // default to show card at normal state, if showCard() is called without parameter
@@ -301,5 +329,10 @@ extension MapViewController {
       
         // else return an alpha value in between 0.0 and 0.7 based on the top constraint value
         return fullDimAlpha * 1 - ((value - fullDimPosition) / fullDimPosition)
+    }
+    
+    private func resetDetailsView() {
+        self.poiTitleLabel.text = ""
+        self.poiDescriptionLabel.text = ""
     }
 }
