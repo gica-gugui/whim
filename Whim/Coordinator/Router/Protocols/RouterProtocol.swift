@@ -12,7 +12,6 @@ protocol RouterProtocol: PresentableProtocol {
     
     func present(_ module: PresentableProtocol?)
     func present(_ module: PresentableProtocol?, animated: Bool)
-    func presentWithSnapshot(_ module: PresentableProtocol?)
     
     func push(_ module: PresentableProtocol?)
     func push(_ module: PresentableProtocol?, animated: Bool)

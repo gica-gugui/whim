@@ -30,13 +30,6 @@ final class Router: NSObject, RouterProtocol {
         rootController?.present(controller, animated: animated, completion: nil)
     }
     
-    func presentWithSnapshot(_ module: PresentableProtocol?) {
-        guard let controller = module?.toPresent() else { return }
-        controller.modalPresentationStyle = .fullScreen
-        
-        self.rootController?.present(controller, animated: false, completion: nil)
-    }
-    
     func dismissModule() {
         dismissModule(animated: true, completion: nil)
     }

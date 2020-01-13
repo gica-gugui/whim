@@ -11,8 +11,7 @@ import CoreLocation
 
 class NavigationCoordinator: BaseCoordinator, NavigationCoordinatorOutput {
     typealias ModuleFactory =
-        MapModuleFactoryProtocol &
-        MapDetailsModuleFactoryProtocol
+        MapModuleFactoryProtocol
     
     private let coordinatorFactory: CoordinatorFactoryProtocol
     private let router: RouterProtocol
@@ -22,7 +21,6 @@ class NavigationCoordinator: BaseCoordinator, NavigationCoordinatorOutput {
     var finishFlow: (() -> Void)?
     
     private weak var mapView: MapViewProtocol!
-    private weak var mapDetailsView: MapDetailsViewProtocol!
     
     init(factory: ModuleFactory,
          coordinatorFactory: CoordinatorFactoryProtocol,
@@ -43,23 +41,10 @@ class NavigationCoordinator: BaseCoordinator, NavigationCoordinatorOutput {
         mapView = factory.makeMapOutput()
  
         mapView.onPOIDetailsTap = { [weak self] mapAnnotation in
-            self?.showPoiDetails(annotation: mapAnnotation)
+            
         }
         
         router.setRootModule(mapView, hideBar: true)
-    }
-    
-    private func showPoiDetails(annotation: MapAnnotation) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15 , execute: { [weak self] in
-            self?.mapDetailsView = self?.factory.makeMapDetailsOutput()
-            
-            self?.mapDetailsView.snapshotImage = self?.router.snapshot()
-            
-            self?.router.presentWithSnapshot(self?.mapDetailsView)
-        })
-        
-        //TODO
-        // relese objects from memory
     }
     
     private func runPermissionsFlow() {
