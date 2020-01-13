@@ -302,8 +302,4 @@ extension MapViewController {
         // else return an alpha value in between 0.0 and 0.7 based on the top constraint value
         return fullDimAlpha * 1 - ((value - fullDimPosition) / fullDimPosition)
     }
-    
-    private var resetModal() {
-    
-    }
 }
