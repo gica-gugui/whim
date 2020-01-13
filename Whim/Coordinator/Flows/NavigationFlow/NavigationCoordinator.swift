@@ -12,7 +12,7 @@ import CoreLocation
 
 class NavigationCoordinator: BaseCoordinator, NavigationCoordinatorOutput {
     typealias ModuleFactory =
-        MapModuleFactoryProtocol
+        MapModuleFactoryProtocol & NoInternetModuleFactoryProtocol
     
     private let coordinatorFactory: CoordinatorFactoryProtocol
     private let router: RouterProtocol
@@ -36,6 +36,7 @@ class NavigationCoordinator: BaseCoordinator, NavigationCoordinatorOutput {
     override func start() {
         showMap()
         runPermissionsFlow()
+        handleConnectivity()
     }
     
     private func showMap() {
@@ -82,8 +83,31 @@ class NavigationCoordinator: BaseCoordinator, NavigationCoordinatorOutput {
         handler.handle(with: handlerOption)
     }
     
+    private func handleConnectivity() {
+        let handler = handlerFactory.getReachabilityHandler()
+        
+        handler.onListenerNotified = { [weak self] status in
+            switch status {
+            case .notReachable, .unknown:
+                let noInternetView = self?.factory.makeNoInternetOutput()
+                self?.router.present(noInternetView)
+            case .reachable(_):
+                self?.router.dismissModule(animated: true, completion: nil)
+            }
+        }
+        
+        addDependency(handler)
+        
+        let handlerOption = ReachabilityHandlerOption.build(type: ReachabilityConstants.StartListening)
+        handler.handle(with: handlerOption)
+    }
+    
     private func removeAllDependencies() {
         for (_, element) in childCoordinators.enumerated() {
+            removeDependency(element)
+        }
+        
+        for (_, element) in handlers.enumerated() {
             removeDependency(element)
         }
     }

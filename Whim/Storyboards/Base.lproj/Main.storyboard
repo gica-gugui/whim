@@ -9,6 +9,35 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--No Internet View Controller-->
+        <scene sceneID="hBT-Do-FeN">
+            <objects>
+                <viewController storyboardIdentifier="NoInternetViewController" id="WJ4-1a-YeQ" customClass="NoInternetViewController" customModule="Whim" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HBs-vg-2ak">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No internet connection. Please connect to the internet to continue." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJp-F1-ZrH">
+                                <rect key="frame" x="10" y="424" width="394" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QJp-F1-ZrH" secondAttribute="trailing" constant="10" id="OFj-JT-sjv"/>
+                            <constraint firstItem="QJp-F1-ZrH" firstAttribute="centerY" secondItem="HBs-vg-2ak" secondAttribute="centerY" id="nkU-7b-dMi"/>
+                            <constraint firstItem="QJp-F1-ZrH" firstAttribute="leading" secondItem="HBs-vg-2ak" secondAttribute="leading" constant="10" id="o7M-cW-fwJ"/>
+                            <constraint firstItem="QJp-F1-ZrH" firstAttribute="centerX" secondItem="HBs-vg-2ak" secondAttribute="centerX" id="s6h-Vl-fzU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JuF-CW-0Na"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Oe-Ek-8SO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1490" y="-75"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="2vm-nA-qdZ">
             <objects>

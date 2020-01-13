@@ -83,6 +83,9 @@
 		6E59D6AF23CCDF8B00E8A5CE /* POIPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D6AE23CCDF8B00E8A5CE /* POIPage.swift */; };
 		6E59D6B223CCE52100E8A5CE /* POIDetailsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D6B123CCE52100E8A5CE /* POIDetailsQuery.swift */; };
 		6E59D6B423CCE59800E8A5CE /* POIDetailsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D6B323CCE59800E8A5CE /* POIDetailsResult.swift */; };
+		6EE2087223CD0FDE008B2AFF /* NoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE2087123CD0FDE008B2AFF /* NoInternetViewController.swift */; };
+		6EE2087423CD103B008B2AFF /* NoInternetViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE2087323CD103B008B2AFF /* NoInternetViewProtocol.swift */; };
+		6EE2087623CD1083008B2AFF /* NoInternetModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE2087523CD1083008B2AFF /* NoInternetModuleFactoryProtocol.swift */; };
 		83EADC284879C18A21C27407 /* Pods_WhimUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5D4F75DB5D7D63C1B5AF0B /* Pods_WhimUITests.framework */; };
 		A9A2687E79DE2BAFDF5FA65C /* Pods_Whim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD39A5CEFA4EB34EBF6AECE /* Pods_Whim.framework */; };
 		B0F5C2016935F2BC0A521334 /* Pods_WhimTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C23707D9CB0849005E4C0A /* Pods_WhimTests.framework */; };
@@ -190,6 +193,9 @@
 		6E59D6AE23CCDF8B00E8A5CE /* POIPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIPage.swift; sourceTree = "<group>"; };
 		6E59D6B123CCE52100E8A5CE /* POIDetailsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIDetailsQuery.swift; sourceTree = "<group>"; };
 		6E59D6B323CCE59800E8A5CE /* POIDetailsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIDetailsResult.swift; sourceTree = "<group>"; };
+		6EE2087123CD0FDE008B2AFF /* NoInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetViewController.swift; sourceTree = "<group>"; };
+		6EE2087323CD103B008B2AFF /* NoInternetViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetViewProtocol.swift; sourceTree = "<group>"; };
+		6EE2087523CD1083008B2AFF /* NoInternetModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetModuleFactoryProtocol.swift; sourceTree = "<group>"; };
 		81C23707D9CB0849005E4C0A /* Pods_WhimTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhimTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD39A5CEFA4EB34EBF6AECE /* Pods_Whim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Whim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33E037C34309FED72871000 /* Pods-WhimTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhimTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhimTests/Pods-WhimTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -376,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				0FA699B023C91B7100ECED74 /* MapViewProtocol.swift */,
+				6EE2087323CD103B008B2AFF /* NoInternetViewProtocol.swift */,
 			);
 			path = Presentables;
 			sourceTree = "<group>";
@@ -645,6 +652,7 @@
 			isa = PBXGroup;
 			children = (
 				0FA699B823C91F6200ECED74 /* MapModuleFactoryProtocol.swift */,
+				6EE2087523CD1083008B2AFF /* NoInternetModuleFactoryProtocol.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -682,6 +690,7 @@
 			children = (
 				6E59D68C23C8CB2A00E8A5CE /* Base */,
 				0FA699AB23C91A5D00ECED74 /* Map */,
+				6EE2087023CD0FC3008B2AFF /* NoInternet */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -715,6 +724,14 @@
 				6E59D6B323CCE59800E8A5CE /* POIDetailsResult.swift */,
 			);
 			path = POIDetails;
+			sourceTree = "<group>";
+		};
+		6EE2087023CD0FC3008B2AFF /* NoInternet */ = {
+			isa = PBXGroup;
+			children = (
+				6EE2087123CD0FDE008B2AFF /* NoInternetViewController.swift */,
+			);
+			path = NoInternet;
 			sourceTree = "<group>";
 		};
 		A2E46DD5ED0EB85B63D6524A /* Frameworks */ = {
@@ -950,6 +967,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EE2087223CD0FDE008B2AFF /* NoInternetViewController.swift in Sources */,
 				0F4A1D2523CB3C69007FF59D /* UIView.swift in Sources */,
 				0F4A1CED23C9E0AD007FF59D /* MapViewModel.swift in Sources */,
 				6E59D68A23C8C05200E8A5CE /* Router.swift in Sources */,
@@ -961,12 +979,14 @@
 				6E59D68623C8BFF400E8A5CE /* HandlerProtocol.swift in Sources */,
 				0FA699B923C91F6200ECED74 /* MapModuleFactoryProtocol.swift in Sources */,
 				0FA699CD23C92AC600ECED74 /* PrePremissionConstants.swift in Sources */,
+				6EE2087623CD1083008B2AFF /* NoInternetModuleFactoryProtocol.swift in Sources */,
 				6E59D69423C8D49300E8A5CE /* IntermediableProtocol.swift in Sources */,
 				6E59D68123C8BF9700E8A5CE /* RouterProtocol.swift in Sources */,
 				0F4A1CF723C9E929007FF59D /* SessionManagerHandler.swift in Sources */,
 				0FA699D123C92B9100ECED74 /* ReachabilityHandlerProtocol.swift in Sources */,
 				0FA699DB23C92C6800ECED74 /* ReachabilityHandler.swift in Sources */,
 				6E59D69023C8CD4700E8A5CE /* BaseViewController.swift in Sources */,
+				6EE2087423CD103B008B2AFF /* NoInternetViewProtocol.swift in Sources */,
 				6E59D67023C8BDEB00E8A5CE /* LocationHandlerFactoryProtocol.swift in Sources */,
 				6E59D66A23C8BD6B00E8A5CE /* CoordinatorFactoryProtocol.swift in Sources */,
 				6E59D66E23C8BDBA00E8A5CE /* LocationServiceDelegate.swift in Sources */,

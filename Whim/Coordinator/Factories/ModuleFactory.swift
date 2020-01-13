@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias ModuleFactoryProtocol = MapModuleFactoryProtocol
+typealias ModuleFactoryProtocol = MapModuleFactoryProtocol & NoInternetModuleFactoryProtocol
 
 final class ModuleFactory: ModuleFactoryProtocol {
     func makeMapOutput() -> MapViewProtocol {
@@ -29,6 +29,12 @@ final class ModuleFactory: ModuleFactoryProtocol {
         let viewController = MapViewController.controllerFromStoryboard(.main)
         
         viewController.viewModel = viewModel
+        
+        return viewController
+    }
+    
+    func makeNoInternetOutput() -> NoInternetViewProtocol {
+        let viewController = NoInternetViewController.controllerFromStoryboard(.main)
         
         return viewController
     }
