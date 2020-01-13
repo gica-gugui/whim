@@ -13,7 +13,7 @@ public extension Date {
     fileprivate static var shortDateFormatter: DateFormatter!
 
     struct Format {
-        public static let General = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        public static let General = "yyyy-MM-dd'T'HH:mm:ssZ"
         public static let Short = "dd-MMMM-yyyy"
     }
     

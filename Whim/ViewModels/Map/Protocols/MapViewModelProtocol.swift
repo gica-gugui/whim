@@ -7,10 +7,14 @@
 //
 
 import CoreLocation
+import MapKit
 
 protocol MapViewModelProtocol {
-    var onPoisLoaded: ((_ pois: [POI]) -> Void)? { get set }
+    var onPoisLoaded: ((_ mapAnnotations: [MapAnnotation]) -> Void)? { get set }
     
     func loadPointOfInterests(location: CLLocation)
+    func loadPointOfInterest(mapAnnotation: MapAnnotation)
+    
     func getCenterLocation() -> CLLocation?
+    func getAnnotationsRegion() -> MKCoordinateRegion?
 }

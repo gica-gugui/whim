@@ -10,4 +10,5 @@ import RxSwift
 
 public protocol WikiRepositoryProtocol {
     func getPOIs(latitude: Double, longitude: Double) -> Observable<POIResult>
+    func getPOI(pageId: Int) -> Observable<POIDetailsResult>
 }

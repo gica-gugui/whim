@@ -9,6 +9,23 @@
 import RxSwift
 
 public class WikiRepository: BaseRepository, WikiRepositoryProtocol {
+    public func getPOI(pageId: Int) -> Observable<POIDetailsResult> {
+        let headers = [
+            "Content-type": "application/json"
+        ]
+
+        let parameters = [
+            "action": "query",
+            "prop": "info%7Cdescription%7Cimages",
+            "pageids": "\(pageId)",
+            "format": "json"
+        ]
+        
+        let url = ApiHelper.getURL(BaseUrl.Wiki, action: Action.Wikipedia.PointOfInterests, parameters: parameters)
+
+        return api.executeRequest(url: url!, method: .get, headers: headers, body: nil)
+    }
+    
     public func getPOIs(latitude: Double, longitude: Double) -> Observable<POIResult> {
         let headers = [
             "Content-type": "application/json"
@@ -21,7 +38,7 @@ public class WikiRepository: BaseRepository, WikiRepositoryProtocol {
             "gscoord": "\(latitude)%7C\(longitude)",
             "gslimit": "50",
             "format": "json"
-            ]
+        ]
         
         let url = ApiHelper.getURL(BaseUrl.Wiki, action: Action.Wikipedia.PointOfInterests, parameters: parameters)
 

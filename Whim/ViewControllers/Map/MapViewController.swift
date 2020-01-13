@@ -77,15 +77,15 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
     }
     
     private func setupViewModel() {
-        viewModel.onPoisLoaded = { [weak self] pois in
-             self?.setPois(pois: pois)
+        self.viewModel.onPoisLoaded = { [weak self] mapAnnotations in
+             self?.setMapAnnotations(annotations: mapAnnotations)
         }
     }
     
     func locationObtained(location: CLLocation) {
-        setCurrentLocation(location: location)
+        self.setCurrentLocation(location: location)
         
-        viewModel.loadPointOfInterests(location: location)
+        self.viewModel.loadPointOfInterests(location: location)
     }
     
     private func setCurrentLocation(location: CLLocation) {
@@ -93,37 +93,23 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
             title: NSLocalizedString("mapAnnotation.title", comment: ""),
             type: .currentLocation,
             coordinate: location.coordinate,
+            distance: 0,
             color: UIColor.systemGreen,
             pageId: nil)
             
-        mapView.addAnnotation(mapAnnotation)
+        self.mapView.addAnnotation(mapAnnotation)
         
-        mapView.setCenter(location.coordinate, animated: true)
+        self.mapView.setCenter(location.coordinate, animated: true)
     }
     
-    private func setPois(pois:[POI]) {
-        var poiAnnotations = [MapAnnotation]()
-        var maxDistance = 0.0
+    private func setMapAnnotations(annotations: [MapAnnotation]) {
+        self.mapView.addAnnotations(annotations)
         
-        for poi in pois {
-            let poiAnnotation = MapAnnotation.init(poi: poi)!
-            
-            poiAnnotations.append(poiAnnotation)
-            
-            if poi.dist > maxDistance {
-                maxDistance = poi.dist
-            }
-        }
-        
-        mapView.addAnnotations(poiAnnotations)
-        
-        guard let centerLocation = self.viewModel.getCenterLocation() else {
+        guard let annotationsRegion = self.viewModel.getAnnotationsRegion() else {
             return
         }
         
-        let centerRegion = MKCoordinateRegion(center: centerLocation.coordinate, latitudinalMeters: maxDistance, longitudinalMeters: maxDistance)
-        
-        mapView.setRegion(centerRegion, animated: true)
+        self.mapView.setRegion(annotationsRegion, animated: true)
     }
 }
 
@@ -145,12 +131,19 @@ extension MapViewController: MKMapViewDelegate {
       }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-//        guard let mapAnnotation = view.annotation as? MapAnnotation else {
-//            return
-//        }
+        guard let annotation = view.annotation as? MapAnnotation, annotation.type == .poi else {
+            return
+        }
+        
+        self.viewModel.loadPointOfInterest(mapAnnotation: annotation)
         
         showCard()
-//        onPOIDetailsTap?(mapAnnotation)
+    }
+    
+    private func deselectAllAnnotations() {
+        for annotation in mapView.selectedAnnotations {
+            mapView.deselectAnnotation(annotation, animated: true)
+        }
     }
 }
 
@@ -273,6 +266,8 @@ extension MapViewController {
         
         // run the animation
         hideCard.startAnimation()
+        
+        self.deselectAllAnnotations()
     }
     
     private func dimAlphaWithCardTopConstraint(value: CGFloat) -> CGFloat {
@@ -306,5 +301,9 @@ extension MapViewController {
       
         // else return an alpha value in between 0.0 and 0.7 based on the top constraint value
         return fullDimAlpha * 1 - ((value - fullDimPosition) / fullDimPosition)
+    }
+    
+    private var resetModal() {
+    
     }
 }

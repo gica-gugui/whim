@@ -78,6 +78,11 @@
 		6E59D69023C8CD4700E8A5CE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D68F23C8CD4700E8A5CE /* BaseViewController.swift */; };
 		6E59D69223C8D3DC00E8A5CE /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D69123C8D3DC00E8A5CE /* BaseNavigationController.swift */; };
 		6E59D69423C8D49300E8A5CE /* IntermediableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D69323C8D49300E8A5CE /* IntermediableProtocol.swift */; };
+		6E59D6AB23CCD9C700E8A5CE /* POIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D6AA23CCD9C700E8A5CE /* POIImage.swift */; };
+		6E59D6AD23CCDA5400E8A5CE /* POIDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D6AC23CCDA5400E8A5CE /* POIDetails.swift */; };
+		6E59D6AF23CCDF8B00E8A5CE /* POIPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D6AE23CCDF8B00E8A5CE /* POIPage.swift */; };
+		6E59D6B223CCE52100E8A5CE /* POIDetailsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D6B123CCE52100E8A5CE /* POIDetailsQuery.swift */; };
+		6E59D6B423CCE59800E8A5CE /* POIDetailsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D6B323CCE59800E8A5CE /* POIDetailsResult.swift */; };
 		83EADC284879C18A21C27407 /* Pods_WhimUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5D4F75DB5D7D63C1B5AF0B /* Pods_WhimUITests.framework */; };
 		A9A2687E79DE2BAFDF5FA65C /* Pods_Whim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD39A5CEFA4EB34EBF6AECE /* Pods_Whim.framework */; };
 		B0F5C2016935F2BC0A521334 /* Pods_WhimTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C23707D9CB0849005E4C0A /* Pods_WhimTests.framework */; };
@@ -180,6 +185,11 @@
 		6E59D68F23C8CD4700E8A5CE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		6E59D69123C8D3DC00E8A5CE /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		6E59D69323C8D49300E8A5CE /* IntermediableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediableProtocol.swift; sourceTree = "<group>"; };
+		6E59D6AA23CCD9C700E8A5CE /* POIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIImage.swift; sourceTree = "<group>"; };
+		6E59D6AC23CCDA5400E8A5CE /* POIDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIDetails.swift; sourceTree = "<group>"; };
+		6E59D6AE23CCDF8B00E8A5CE /* POIPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIPage.swift; sourceTree = "<group>"; };
+		6E59D6B123CCE52100E8A5CE /* POIDetailsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIDetailsQuery.swift; sourceTree = "<group>"; };
+		6E59D6B323CCE59800E8A5CE /* POIDetailsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIDetailsResult.swift; sourceTree = "<group>"; };
 		81C23707D9CB0849005E4C0A /* Pods_WhimTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhimTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD39A5CEFA4EB34EBF6AECE /* Pods_Whim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Whim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33E037C34309FED72871000 /* Pods-WhimTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhimTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhimTests/Pods-WhimTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -283,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				0F4A1D1223C9EFC4007FF59D /* POI */,
+				6E59D6B023CCDF9100E8A5CE /* POIDetails */,
 				0F4A1D0523C9EC05007FF59D /* Error */,
 			);
 			path = Models;
@@ -694,6 +705,18 @@
 			path = Flows;
 			sourceTree = "<group>";
 		};
+		6E59D6B023CCDF9100E8A5CE /* POIDetails */ = {
+			isa = PBXGroup;
+			children = (
+				6E59D6AC23CCDA5400E8A5CE /* POIDetails.swift */,
+				6E59D6AA23CCD9C700E8A5CE /* POIImage.swift */,
+				6E59D6AE23CCDF8B00E8A5CE /* POIPage.swift */,
+				6E59D6B123CCE52100E8A5CE /* POIDetailsQuery.swift */,
+				6E59D6B323CCE59800E8A5CE /* POIDetailsResult.swift */,
+			);
+			path = POIDetails;
+			sourceTree = "<group>";
+		};
 		A2E46DD5ED0EB85B63D6524A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -947,15 +970,18 @@
 				6E59D67023C8BDEB00E8A5CE /* LocationHandlerFactoryProtocol.swift in Sources */,
 				6E59D66A23C8BD6B00E8A5CE /* CoordinatorFactoryProtocol.swift in Sources */,
 				6E59D66E23C8BDBA00E8A5CE /* LocationServiceDelegate.swift in Sources */,
+				6E59D6AB23CCD9C700E8A5CE /* POIImage.swift in Sources */,
 				0F4A1CF423C9E72F007FF59D /* Actions.swift in Sources */,
 				6E59D65D23C8BBC200E8A5CE /* BaseCoordinator.swift in Sources */,
 				0F4A1D1823C9FC9C007FF59D /* POIResult.swift in Sources */,
 				6E59D69223C8D3DC00E8A5CE /* BaseNavigationController.swift in Sources */,
+				6E59D6B223CCE52100E8A5CE /* POIDetailsQuery.swift in Sources */,
 				0FA699C523C9291B00ECED74 /* PermissionsCoordinator.swift in Sources */,
 				6E59D68423C8BFE200E8A5CE /* BaseViewProtocol.swift in Sources */,
 				0FA699C923C92A5E00ECED74 /* LocationHandlerProtocol.swift in Sources */,
 				0F4A1D3123CC4592007FF59D /* CardViewState.swift in Sources */,
 				0FA699BF23C920B200ECED74 /* NSObject.swift in Sources */,
+				6E59D6AD23CCDA5400E8A5CE /* POIDetails.swift in Sources */,
 				6E59D67B23C8BF2400E8A5CE /* HandlerFactory.swift in Sources */,
 				0FA699BD23C9202300ECED74 /* UIViewController.swift in Sources */,
 				0FA699AD23C91A8E00ECED74 /* MapViewController.swift in Sources */,
@@ -974,6 +1000,7 @@
 				0F4A1D0723C9EC0D007FF59D /* ApiError.swift in Sources */,
 				6E59D67D23C8BF2D00E8A5CE /* ModuleFactory.swift in Sources */,
 				6E59D67923C8BF1200E8A5CE /* CoordinatorFactory.swift in Sources */,
+				6E59D6B423CCE59800E8A5CE /* POIDetailsResult.swift in Sources */,
 				0F4A1D1C23CA7730007FF59D /* MapAnnotation.swift in Sources */,
 				6E59D65723C8B8A200E8A5CE /* Storyboards.swift in Sources */,
 				0FA699E123C92FF400ECED74 /* PrePermissionHandlerFactoryProtocol.swift in Sources */,
@@ -982,6 +1009,7 @@
 				0FA699D523C92BDF00ECED74 /* NetworkStatus.swift in Sources */,
 				0FA699DF23C92EE700ECED74 /* LocationHandler.swift in Sources */,
 				0F4A1D1623C9F40D007FF59D /* BaseUrl.swift in Sources */,
+				6E59D6AF23CCDF8B00E8A5CE /* POIPage.swift in Sources */,
 				0FA699CF23C92B5F00ECED74 /* PresentableProtocol.swift in Sources */,
 				0FA699D723C92BFF00ECED74 /* CellularConnectionType.swift in Sources */,
 				0F4A1CF023C9E0DD007FF59D /* MapViewModelProtocol.swift in Sources */,
