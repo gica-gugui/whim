@@ -30,6 +30,14 @@ final class Router: NSObject, RouterProtocol {
         rootController?.present(controller, animated: animated, completion: nil)
     }
     
+    func present(_ module: PresentableProtocol?, animated: Bool, presentationStyle: UIModalPresentationStyle) {
+        guard let controller = module?.toPresent() else { return }
+        
+        controller.modalPresentationStyle = presentationStyle
+        
+        rootController?.present(controller, animated: animated, completion: nil)
+    }
+    
     func dismissModule() {
         dismissModule(animated: true, completion: nil)
     }

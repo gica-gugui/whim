@@ -90,7 +90,7 @@ class NavigationCoordinator: BaseCoordinator, NavigationCoordinatorOutput {
             switch status {
             case .notReachable, .unknown:
                 let noInternetView = self?.factory.makeNoInternetOutput()
-                self?.router.present(noInternetView)
+                self?.router.present(noInternetView, animated: true, presentationStyle: .fullScreen)
             case .reachable(_):
                 self?.router.dismissModule(animated: true, completion: nil)
             }
