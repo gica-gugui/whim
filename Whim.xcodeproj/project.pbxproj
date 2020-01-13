@@ -30,6 +30,7 @@
 		0F4A1D2023CB2625007FF59D /* MapMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A1D1F23CB2625007FF59D /* MapMarkerView.swift */; };
 		0F4A1D2523CB3C69007FF59D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A1D2423CB3C69007FF59D /* UIView.swift */; };
 		0F4A1D3123CC4592007FF59D /* CardViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A1D3023CC4592007FF59D /* CardViewState.swift */; };
+		0F7E6D0923CD2F3200D4E960 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7E6D0823CD2F3200D4E960 /* MapKit.framework */; };
 		0FA699A423C9146A00ECED74 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699A323C9146A00ECED74 /* ApplicationCoordinator.swift */; };
 		0FA699A823C9182800ECED74 /* NavigationCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699A723C9182800ECED74 /* NavigationCoordinatorOutput.swift */; };
 		0FA699AA23C9184500ECED74 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA699A923C9184500ECED74 /* NavigationCoordinator.swift */; };
@@ -132,6 +133,7 @@
 		0F4A1D1F23CB2625007FF59D /* MapMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerView.swift; sourceTree = "<group>"; };
 		0F4A1D2423CB3C69007FF59D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		0F4A1D3023CC4592007FF59D /* CardViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewState.swift; sourceTree = "<group>"; };
+		0F7E6D0823CD2F3200D4E960 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0FA699A323C9146A00ECED74 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		0FA699A723C9182800ECED74 /* NavigationCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorOutput.swift; sourceTree = "<group>"; };
 		0FA699A923C9184500ECED74 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F7E6D0923CD2F3200D4E960 /* MapKit.framework in Frameworks */,
 				A9A2687E79DE2BAFDF5FA65C /* Pods_Whim.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -737,6 +740,7 @@
 		A2E46DD5ED0EB85B63D6524A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F7E6D0823CD2F3200D4E960 /* MapKit.framework */,
 				BFD39A5CEFA4EB34EBF6AECE /* Pods_Whim.framework */,
 				81C23707D9CB0849005E4C0A /* Pods_WhimTests.framework */,
 				FD5D4F75DB5D7D63C1B5AF0B /* Pods_WhimUITests.framework */,

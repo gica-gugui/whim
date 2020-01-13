@@ -12,9 +12,11 @@ import MapKit
 protocol MapViewModelProtocol {
     var onPoisLoaded: ((_ mapAnnotations: [MapAnnotation]) -> Void)? { get set }
     var onPoiLoaded: ((_ poi: POIDetails) -> Void)? { get set }
+    var onDirectionComputed: ((_ routes: [MKRoute]) -> Void)? { get set }
     
     func loadPointOfInterests(location: CLLocation)
     func loadPointOfInterest(mapAnnotation: MapAnnotation)
+    func loadDirections()
     
     func getCenterLocation() -> CLLocation?
     func getAnnotationsRegion() -> MKCoordinateRegion?

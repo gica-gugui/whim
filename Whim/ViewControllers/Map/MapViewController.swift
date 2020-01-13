@@ -92,6 +92,15 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
         self.viewModel.onPoiLoaded = { [weak self] poi in
             self?.setPOIDetails(poi: poi)
         }
+        
+        self.viewModel.onDirectionComputed = { [weak self] routes in
+            guard let route = routes.first else {
+                return
+            }
+            
+            self?.mapView.addOverlay(route.polyline)
+            self?.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+        }
     }
     
     func locationObtained(location: CLLocation) {
@@ -167,6 +176,13 @@ extension MapViewController: MKMapViewDelegate {
         showCard()
     }
     
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+        renderer.strokeColor = UIColor.blue
+        
+        return renderer
+    }
+    
     private func deselectAllAnnotations() {
         for annotation in mapView.selectedAnnotations {
             mapView.deselectAnnotation(annotation, animated: true)
@@ -238,6 +254,16 @@ extension MapViewController {
         }
         
         self.openWikipediaArticle?(wikiUrl)
+    }
+    
+    @IBAction private func poiNavigationButtonTap(_ sender: Any) {
+        showCard(atState: .normal)
+        
+        viewModel.loadDirections()
+    }
+    
+    @IBAction private func poiRoutesButtonTap(_ sender: Any) {
+        
     }
     
     // default to show card at normal state, if showCard() is called without parameter
