@@ -17,10 +17,11 @@ protocol MapViewModelProtocol {
     
     func loadPointOfInterests(location: CLLocation)
     func loadPointOfInterest(mapAnnotation: MapAnnotation)
-    func loadDirections()
+    func loadDirections(alternateDirections: Bool)
     
     func setModalState(state: MapDetailsState)
-    func setModalStateWhenDimmed()
+    
+    func isInDirectionsMode() -> Bool
     
     func getWikipediaLink() -> String?
     func getAnnotationsWithoutInteraction() -> [MapAnnotation]
@@ -28,6 +29,6 @@ protocol MapViewModelProtocol {
     func getRegionForCenter() -> MKCoordinateRegion?
     func getRegionForAnnotation(_ coordinate: CLLocationCoordinate2D) -> MKCoordinateRegion?
     func getTranslatedRegion(_ region: MKCoordinateRegion) -> MKCoordinateRegion
-    func getTranslatedRegion(_ polyline: MKPolyline) -> MKCoordinateRegion
+    func getTranslatedRegion(_ polylines: [MKPolyline]) -> MKCoordinateRegion?
     func getScaledRegion(_ region: MKCoordinateRegion) -> MKCoordinateRegion
 }

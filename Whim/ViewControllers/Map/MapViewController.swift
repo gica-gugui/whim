@@ -91,25 +91,33 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
         }
         
         self.viewModel.onDirectionComputed = { [weak self] routes in
-            guard let route = routes.first else {
+            guard routes.count > 0 else {
                 return
             }
             
-            self?.mapView.addOverlay(route.polyline)
+            let polylines = routes.map { route in
+                return route.polyline
+            }
+            
+            self?.mapView.addOverlays(polylines)
   
-            self?.centerMapToPolyline(polyline: route.polyline)
+            self?.centerMapToPolylines(polylines: polylines)
         }
         
         self.viewModel.onModalStateChanged = { [weak self] state in
             switch state {
             case .closed:
                 self?.onModalClosed()
+            
             case let .opened(mapAnnotation):
                 self?.onModalOpened(mapAnnotation: mapAnnotation)
+            
             case .directions:
-                self?.onDirectionsOpened()
+                self?.onDirectionsOpened(alternateDirections: false)
+            
             case .routes:
-                return
+                self?.onDirectionsOpened(alternateDirections: true)
+            
             default:
                 return
             }
@@ -134,14 +142,16 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
         resetPoiLabels()
     }
     
-    private func onDirectionsOpened() {
+    private func onDirectionsOpened(alternateDirections: Bool) {
         showCard(atState: .normal)
         
         removeAnnotationsWithoutInteraction()
         
-        viewModel.loadDirections()
+        removeMapOverlays()
         
-        dimmerView.alpha = dimAlphaWithCardTopConstraint(value: CGFloat.greatestFiniteMagnitude)
+        viewModel.loadDirections(alternateDirections: alternateDirections)
+        
+        dimmerView.alpha = 0
     }
     
     func locationObtained(location: CLLocation) {
@@ -218,7 +228,16 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.strokeColor = UIColor.blue
+        
+        if overlay is MKPolyline {
+            if mapView.overlays.count == 1 {
+                renderer.strokeColor = UIColor.red
+                renderer.lineWidth = 5
+            } else {
+                renderer.strokeColor = mapView.overlays.count % 2 == 0 ? UIColor.blue : UIColor.purple
+                renderer.lineWidth = 4
+            }
+        }
         
         return renderer
     }
@@ -241,8 +260,10 @@ extension MapViewController: MKMapViewDelegate {
         mapView.setRegion(translatedRegion, animated: true)
     }
     
-    private func centerMapToPolyline(polyline: MKPolyline) {
-        let translatedRegion = viewModel.getTranslatedRegion(polyline)
+    private func centerMapToPolylines(polylines: [MKPolyline]) {
+        guard let translatedRegion = viewModel.getTranslatedRegion(polylines) else {
+            return
+        }
         
         mapView.setRegion(translatedRegion, animated: true)
     }
@@ -274,7 +295,11 @@ extension MapViewController: MKMapViewDelegate {
 // Modal handling
 extension MapViewController {
     @IBAction func dimmerViewTapped(_ sender: UITapGestureRecognizer) {
-        viewModel.setModalStateWhenDimmed()
+        if viewModel.isInDirectionsMode() {
+            return
+        }
+        
+        viewModel.setModalState(state: .closed)
     }
     
     @IBAction func viewPanned(_ panRecognizer: UIPanGestureRecognizer) {
@@ -282,36 +307,38 @@ extension MapViewController {
         let translation = panRecognizer.translation(in: self.view)
       
         switch panRecognizer.state {
-            case .began:
-                cardPanStartingTopConstant = cardViewTopConstraint.constant
-            
-            case .changed:
-                if self.cardPanStartingTopConstant + translation.y > 30.0 {
-                    self.cardViewTopConstraint.constant = self.cardPanStartingTopConstant + translation.y
+        case .began:
+            cardPanStartingTopConstant = cardViewTopConstraint.constant
+        
+        case .changed:
+            if self.cardPanStartingTopConstant + translation.y > 30.0 {
+                self.cardViewTopConstraint.constant = self.cardPanStartingTopConstant + translation.y
             }
-            
-            // change the dimmer view alpha based on how much user has dragged
-            dimmerView.alpha = dimAlphaWithCardTopConstraint(value: self.cardViewTopConstraint.constant)
+        
+            if !viewModel.isInDirectionsMode() {
+                // change the dimmer view alpha based on how much user has dragged
+                dimmerView.alpha = dimAlphaWithCardTopConstraint(value: self.cardViewTopConstraint.constant)
+            }
 
-            case .ended:
-                if velocity.y > 1500.0 {
+        case .ended:
+            if velocity.y > 1500.0 {
+                viewModel.setModalState(state: .closed)
+                return
+            }
+        
+            if let safeAreaHeight = UIApplication.shared.keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height,
+                let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
+              
+                if self.cardViewTopConstraint.constant < (safeAreaHeight + bottomPadding) * 0.25 {
+                showCard(atState: .expanded)
+                } else if self.cardViewTopConstraint.constant < (safeAreaHeight) - 70 {
+                    showCard(atState: .normal)
+                } else {
                     viewModel.setModalState(state: .closed)
-                    return
                 }
-            
-                if let safeAreaHeight = UIApplication.shared.keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height,
-                    let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
-                  
-                    if self.cardViewTopConstraint.constant < (safeAreaHeight + bottomPadding) * 0.25 {
-                    showCard(atState: .expanded)
-                    } else if self.cardViewTopConstraint.constant < (safeAreaHeight) - 70 {
-                        showCard(atState: .normal)
-                    } else {
-                        viewModel.setModalState(state: .closed)
-                    }
-                }
-            default:
-                break
+            }
+        default:
+            break
         }
     }
     
@@ -328,7 +355,7 @@ extension MapViewController {
     }
     
     @IBAction private func poiRoutesButtonTap(_ sender: Any) {
-        
+        viewModel.setModalState(state: .routes)
     }
     
     // default to show card at normal state, if showCard() is called without parameter
@@ -358,10 +385,12 @@ extension MapViewController {
             self.view.layoutIfNeeded()
         })
       
-        // show dimmer view
-        // this will animate the dimmerView alpha together with the card move up animation
-        showCard.addAnimations {
-            self.dimmerView.alpha = 0.7
+        if !viewModel.isInDirectionsMode() {
+            // show dimmer view
+            // this will animate the dimmerView alpha together with the card move up animation
+            showCard.addAnimations {
+                self.dimmerView.alpha = 0.7
+            }
         }
       
         // run the animation

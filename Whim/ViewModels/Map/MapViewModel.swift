@@ -83,7 +83,7 @@ class MapViewModel: MapViewModelProtocol {
             .disposed(by: disposeBag)
     }
     
-    func loadDirections() {
+    func loadDirections(alternateDirections: Bool) {
         guard let source = self.centerLocation, let poi = self.pointOfInterest else {
             return
         }
@@ -99,7 +99,7 @@ class MapViewModel: MapViewModelProtocol {
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: source.coordinate.latitude, longitude: source.coordinate.longitude), addressDictionary: nil))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination, addressDictionary: nil))
-//        request.requestsAlternateRoutes = true
+        request.requestsAlternateRoutes = alternateDirections
         request.transportType = .walking
 
         let directions = MKDirections(request: request)
@@ -117,12 +117,12 @@ class MapViewModel: MapViewModelProtocol {
         self.modalState = state
     }
     
-    func setModalStateWhenDimmed() {
+    func isInDirectionsMode() -> Bool {
         if let state = self.modalState, state == .directions || state == .routes {
-            return
+            return true
         }
         
-        self.modalState = .closed
+        return false
     }
     
     func getWikipediaLink() -> String? {
@@ -157,8 +157,22 @@ class MapViewModel: MapViewModelProtocol {
         return MKCoordinateRegion(center: centerPointNewRegion, span: region.span)
     }
 
-    func getTranslatedRegion(_ polyline: MKPolyline) -> MKCoordinateRegion {
-        let region = MKCoordinateRegion.init(polyline.boundingMapRect)
+    func getTranslatedRegion(_ polylines: [MKPolyline]) -> MKCoordinateRegion? {
+        var mapRect: MKMapRect
+        
+        if polylines.count == 0 {
+            return nil
+        } else if polylines.count == 1 {
+            mapRect = polylines[0].boundingMapRect
+        } else {
+            mapRect = polylines[0].boundingMapRect
+            
+            for index in 1 ..< polylines.count {
+                mapRect.union(polylines[index].boundingMapRect)
+            }
+        }
+        
+        let region = MKCoordinateRegion.init(mapRect)
         
         let scaledRegion = getScaledRegion(region)
         
