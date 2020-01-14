@@ -31,6 +31,7 @@ class MapViewModel: MapViewModelProtocol {
     private var mapAnnotations = [MapAnnotation]()
     private var mapAnnotation: MapAnnotation?
     private var pointOfInterest: POIDetails?
+    private var pointOfInterestImages = [POIImageInfo]()
     
     init(wikiRepository: WikiRepository) {
         self.wikiRepository = wikiRepository
@@ -69,15 +70,28 @@ class MapViewModel: MapViewModelProtocol {
         self.mapAnnotation = mapAnnotation
         
         _ = wikiRepository.getPOI(pageId: pageId)
+            .flatMap { poiDetails in
+                return Observable.from(poiDetails.query.pages.poiDetails.images ?? [POIImage]())
+                    .concatMap { poiImage in
+                        return self.wikiRepository.getPOIImage(filename: poiImage.title)
+                    }
+                    .toArray()
+                    .map { (poiDetails, $0) }
+            }
             .subscribeOn(InfraHelper.backgroundWorkScheduler)
             .do(onError: { error in
                 print(error)
             })
             .observeOn(MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] result in
-                let poi = result.query.pages.poiDetails
+            .subscribe(onNext: { [weak self] poiDetails, poiImageDetails in
+                let poi = poiDetails.query.pages.poiDetails
+                let poiImages = poiImageDetails.map { poiImageDetails in
+                    return poiImageDetails.query.pages.poiImageItem.imageInfo.first ?? POIImageInfo()
+                }
                 
                 self?.pointOfInterest = poi
+                self?.pointOfInterestImages = poiImages
+                
                 self?.onPoiLoaded?(poi)
             })
             .disposed(by: disposeBag)
@@ -191,6 +205,15 @@ class MapViewModel: MapViewModelProtocol {
         return self.mapAnnotations.filter { annotation in
             annotation.pageId != self.mapAnnotation?.pageId
         }
+    }
+    
+    func getPoiImages() -> [POIImageInfo] {
+        return self.pointOfInterestImages
+    }
+    
+    func resetPoiDetails() {
+        self.pointOfInterest = nil
+        self.pointOfInterestImages = [POIImageInfo]()
     }
     
     private func setAnnotationsDistance(mapAnnotations: [MapAnnotation]) {

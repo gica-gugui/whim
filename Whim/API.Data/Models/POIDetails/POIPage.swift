@@ -28,17 +28,3 @@ public struct POIPage: Codable {
         self.init(poiDetails: poiDetails)
     }
 }
-
-struct DynamicKey: CodingKey {
-    var intValue: Int?
-    var stringValue: String
-    
-    init?(intValue: Int) {
-        self.intValue = intValue
-        self.stringValue = "\(intValue)"
-    }
-    
-    init?(stringValue: String) {
-        self.stringValue = stringValue
-    }
-}

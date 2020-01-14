@@ -44,4 +44,24 @@ public class WikiRepository: BaseRepository, WikiRepositoryProtocol {
 
         return api.executeRequest(url: url!, method: .get, headers: headers, body: nil)
     }
+    
+    public func getPOIImage(filename: String) -> Observable<POIImageDetailsResult> {
+        let headers = [
+            "Content-type": "application/json"
+        ]
+
+        let encodedFilename = filename.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        
+        let parameters = [
+            "action": "query",
+            "prop": "imageinfo",
+            "titles": "\(encodedFilename)",
+            "iiprop": "url",
+            "format": "json"
+        ]
+        
+        let url = ApiHelper.getURL(BaseUrl.Wiki, action: Action.Wikipedia.PointOfInterests, parameters: parameters)
+
+        return api.executeRequest(url: url!, method: .get, headers: headers, body: nil)
+    }
 }

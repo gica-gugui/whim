@@ -78,7 +78,18 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
         viewPan.delaysTouchesBegan = false
         viewPan.delaysTouchesEnded = false
 
-        self.cardView.addGestureRecognizer(viewPan)
+        cardView.addGestureRecognizer(viewPan)
+        
+        setupCollectionView()
+    }
+    
+    private func setupCollectionView() {
+        poiImagesCollectionView.dataSource = self
+        
+        poiImagesCollectionView.showsHorizontalScrollIndicator = false
+        poiImagesCollectionView.showsVerticalScrollIndicator = false
+        
+        poiImagesCollectionView.register(UINib(nibName: PoiImageCollectionViewCell.nameOfClass, bundle: nil), forCellWithReuseIdentifier: PoiImageCollectionViewCell.nameOfClass)
     }
     
     private func setupViewModel() {
@@ -88,6 +99,7 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
         
         self.viewModel.onPoiLoaded = { [weak self] poi in
             self?.setPOIDetails(poi: poi)
+            self?.poiImagesCollectionView.reloadData()
         }
         
         self.viewModel.onDirectionComputed = { [weak self] routes in
@@ -140,6 +152,10 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
         addAnnotationsWithoutInteraction()
         
         resetPoiLabels()
+        
+        viewModel.resetPoiDetails()
+        
+        poiImagesCollectionView.reloadData()
     }
     
     private func onDirectionsOpened(alternateDirections: Bool) {
@@ -191,7 +207,7 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
     }
 }
 
-// MapViewDelegate
+//MARK:- MapViewDelegate
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? MapAnnotation else { return nil }
@@ -292,7 +308,7 @@ extension MapViewController: MKMapViewDelegate {
     }
 }
 
-// Modal handling
+//MARK:- Modal handling
 extension MapViewController {
     @IBAction func dimmerViewTapped(_ sender: UITapGestureRecognizer) {
         if viewModel.isInDirectionsMode() {
@@ -473,5 +489,42 @@ extension MapViewController {
     private func resetPoiLabels() {
         self.poiTitleLabel.text = ""
         self.poiDescriptionLabel.text = ""
+    }
+}
+
+//MARK:- UICollectionViewDataSource
+extension MapViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let poiImages = viewModel.getPoiImages()
+
+        if poiImages.count == 0 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PoiImageCollectionViewCell.nameOfClass, for: indexPath) as? PoiImageCollectionViewCell else {
+                fatalError("Cell \(PoiImageCollectionViewCell.nameOfClass) does not exist in storyboard")
+            }
+
+            cell.configureCell(url: nil)
+
+            return cell
+        }
+
+        let contentUrl = poiImages[indexPath.row].url
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PoiImageCollectionViewCell.nameOfClass, for: indexPath) as? PoiImageCollectionViewCell else {
+            fatalError("Cell \(PoiImageCollectionViewCell.nameOfClass) does not exist in storyboard")
+        }
+
+        cell.configureCell(url: contentUrl)
+
+        return cell
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let poiImagesCount = viewModel.getPoiImages().count
+        
+        return poiImagesCount > 0 ? poiImagesCount : 1
     }
 }

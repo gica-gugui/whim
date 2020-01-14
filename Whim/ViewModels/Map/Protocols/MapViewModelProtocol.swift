@@ -25,10 +25,13 @@ protocol MapViewModelProtocol {
     
     func getWikipediaLink() -> String?
     func getAnnotationsWithoutInteraction() -> [MapAnnotation]
+    func getPoiImages() -> [POIImageInfo]
     
     func getRegionForCenter() -> MKCoordinateRegion?
     func getRegionForAnnotation(_ coordinate: CLLocationCoordinate2D) -> MKCoordinateRegion?
     func getTranslatedRegion(_ region: MKCoordinateRegion) -> MKCoordinateRegion
     func getTranslatedRegion(_ polylines: [MKPolyline]) -> MKCoordinateRegion?
     func getScaledRegion(_ region: MKCoordinateRegion) -> MKCoordinateRegion
+    
+    func resetPoiDetails()
 }
