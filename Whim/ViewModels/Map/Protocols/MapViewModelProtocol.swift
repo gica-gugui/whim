@@ -22,4 +22,9 @@ protocol MapViewModelProtocol {
     func getAnnotationsRegion() -> MKCoordinateRegion?
     func getWikipediaLink() -> String?
     func getAnnotationsMaxDistance() -> Double?
+    
+    func getRegionForAnnotation(_ coordinate: CLLocationCoordinate2D) -> MKCoordinateRegion?
+    func getTranslatedRegion(_ region: MKCoordinateRegion) -> MKCoordinateRegion
+    func getTranslatedRegion(_ polyline: MKPolyline) -> MKCoordinateRegion
+    func getScaledRegion(_ region: MKCoordinateRegion) -> MKCoordinateRegion
 }

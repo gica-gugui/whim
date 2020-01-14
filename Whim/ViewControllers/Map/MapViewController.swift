@@ -99,7 +99,8 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
             }
             
             self?.mapView.addOverlay(route.polyline)
-            self?.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+  
+            self?.centerMapToPolyline(polyline: route.polyline)
         }
     }
     
@@ -190,17 +191,21 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     private func centerMapToAnnotation(annotation: MapAnnotation) {
-        guard let distance = viewModel.getAnnotationsMaxDistance() else {
+        guard let region = viewModel.getRegionForAnnotation(annotation.coordinate) else {
             return
         }
+
+        let fittedRegion = mapView.regionThatFits(region)
         
-        let oldRegion = mapView.regionThatFits(MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: distance, longitudinalMeters: distance))
-        let centerPointOldRegion = oldRegion.center
+        let translatedRegion = viewModel.getTranslatedRegion(fittedRegion)
         
-        let centerPointNewRegion = CLLocationCoordinate2D.init(latitude: centerPointOldRegion.latitude - oldRegion.span.latitudeDelta / 4.0, longitude: centerPointOldRegion.longitude)
-        let newRegion = MKCoordinateRegion(center: centerPointNewRegion, span: oldRegion.span)
+        mapView.setRegion(translatedRegion, animated: true)
+    }
+    
+    private func centerMapToPolyline(polyline: MKPolyline) {
+        let translatedRegion = viewModel.getTranslatedRegion(polyline)
         
-        mapView.setRegion(newRegion, animated: true)
+        mapView.setRegion(translatedRegion, animated: true)
     }
 }
 

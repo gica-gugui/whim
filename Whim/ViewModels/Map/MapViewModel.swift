@@ -135,4 +135,36 @@ class MapViewModel: MapViewModelProtocol {
         
         return MKCoordinateRegion(center: centerLocation.coordinate, latitudinalMeters: maxDistance, longitudinalMeters: maxDistance)
     }
+    
+    func getRegionForAnnotation(_ coordinate: CLLocationCoordinate2D) -> MKCoordinateRegion? {
+        guard let distance = self.annotationsMaxDistance else {
+            return nil
+        }
+        
+        return MKCoordinateRegion(center: coordinate, latitudinalMeters: distance, longitudinalMeters: distance)
+    }
+    
+    func getTranslatedRegion(_ region: MKCoordinateRegion) -> MKCoordinateRegion {
+        let centerPointRegion = region.center
+        
+        let centerPointNewRegion = CLLocationCoordinate2D.init(latitude: centerPointRegion.latitude - region.span.latitudeDelta / 4.0, longitude: centerPointRegion.longitude)
+        
+        return MKCoordinateRegion(center: centerPointNewRegion, span: region.span)
+    }
+
+    func getTranslatedRegion(_ polyline: MKPolyline) -> MKCoordinateRegion {
+        let region = MKCoordinateRegion.init(polyline.boundingMapRect)
+        
+        let scaledRegion = getScaledRegion(region)
+        
+        return getTranslatedRegion(scaledRegion)
+    }
+    
+    func getScaledRegion(_ region: MKCoordinateRegion) -> MKCoordinateRegion {
+        let spanRegion = region.span
+        
+        let spanNewRegion = MKCoordinateSpan(latitudeDelta: spanRegion.latitudeDelta * 2.5, longitudeDelta: spanRegion.longitudeDelta * 1.25)
+        
+        return MKCoordinateRegion(center: region.center, span: spanNewRegion)
+    }
 }
