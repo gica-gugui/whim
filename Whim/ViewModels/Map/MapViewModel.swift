@@ -14,14 +14,22 @@ class MapViewModel: MapViewModelProtocol {
     var onPoisLoaded: ((_ mapAnnotations: [MapAnnotation]) -> Void)?
     var onPoiLoaded: ((_ poi: POIDetails) -> Void)?
     var onDirectionComputed: ((_ routes: [MKRoute]) -> Void)?
+    var onModalStateChanged: ((_ state: MapDetailsState?) -> Void)?
     
     private var wikiRepository: WikiRepositoryProtocol
     
     private var disposeBag = DisposeBag()
     
+    private var modalState: MapDetailsState? {
+        didSet {
+            self.onModalStateChanged?(modalState)
+        }
+    }
+    
     private var centerLocation: CLLocation?
     private var annotationsMaxDistance: Double?
     private var mapAnnotations = [MapAnnotation]()
+    private var mapAnnotation: MapAnnotation?
     private var pointOfInterest: POIDetails?
     
     init(wikiRepository: WikiRepository) {
@@ -47,6 +55,7 @@ class MapViewModel: MapViewModelProtocol {
             .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] mapAnnotations in
                 self?.mapAnnotations = mapAnnotations
+                self?.setAnnotationsDistance(mapAnnotations: mapAnnotations)
                 self?.onPoisLoaded?(mapAnnotations)
             })
             .disposed(by: disposeBag)
@@ -56,6 +65,8 @@ class MapViewModel: MapViewModelProtocol {
         guard let pageId = mapAnnotation.pageId else {
             return
         }
+        
+        self.mapAnnotation = mapAnnotation
         
         _ = wikiRepository.getPOI(pageId: pageId)
             .subscribeOn(InfraHelper.backgroundWorkScheduler)
@@ -102,6 +113,18 @@ class MapViewModel: MapViewModelProtocol {
         }
     }
     
+    func setModalState(state: MapDetailsState) {
+        self.modalState = state
+    }
+    
+    func setModalStateWhenDimmed() {
+        if let state = self.modalState, state == .directions || state == .routes {
+            return
+        }
+        
+        self.modalState = .closed
+    }
+    
     func getWikipediaLink() -> String? {
         guard let pointOfInterest = self.pointOfInterest, let titleUrlEncoded = pointOfInterest.title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             return nil
@@ -110,30 +133,12 @@ class MapViewModel: MapViewModelProtocol {
         return "https://en.wikipedia.org/wiki/\(titleUrlEncoded)"
     }
     
-    func getCenterLocation() -> CLLocation? {
-        return self.centerLocation
-    }
-    
-    func getAnnotationsMaxDistance() -> Double? {
-        return self.annotationsMaxDistance
-    }
-    
-    func getAnnotationsRegion() -> MKCoordinateRegion? {
-        var maxDistance = 0.0
-        
-        for annotation in mapAnnotations {
-            if annotation.distance > maxDistance {
-                maxDistance = annotation.distance
-            }
-        }
-
+    func getRegionForCenter() -> MKCoordinateRegion? {
         guard let centerLocation = self.centerLocation else {
             return nil
         }
         
-        self.annotationsMaxDistance = maxDistance
-        
-        return MKCoordinateRegion(center: centerLocation.coordinate, latitudinalMeters: maxDistance, longitudinalMeters: maxDistance)
+        return getRegionForAnnotation(centerLocation.coordinate)
     }
     
     func getRegionForAnnotation(_ coordinate: CLLocationCoordinate2D) -> MKCoordinateRegion? {
@@ -166,5 +171,23 @@ class MapViewModel: MapViewModelProtocol {
         let spanNewRegion = MKCoordinateSpan(latitudeDelta: spanRegion.latitudeDelta * 2.5, longitudeDelta: spanRegion.longitudeDelta * 1.25)
         
         return MKCoordinateRegion(center: region.center, span: spanNewRegion)
+    }
+    
+    func getAnnotationsWithoutInteraction() -> [MapAnnotation] {
+        return self.mapAnnotations.filter { annotation in
+            annotation.pageId != self.mapAnnotation?.pageId
+        }
+    }
+    
+    private func setAnnotationsDistance(mapAnnotations: [MapAnnotation]) {
+        var maxDistance = 0.0
+        
+        for annotation in mapAnnotations {
+            if annotation.distance > maxDistance {
+                maxDistance = annotation.distance
+            }
+        }
+
+        self.annotationsMaxDistance = maxDistance
     }
 }

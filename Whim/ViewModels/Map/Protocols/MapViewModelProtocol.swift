@@ -13,16 +13,19 @@ protocol MapViewModelProtocol {
     var onPoisLoaded: ((_ mapAnnotations: [MapAnnotation]) -> Void)? { get set }
     var onPoiLoaded: ((_ poi: POIDetails) -> Void)? { get set }
     var onDirectionComputed: ((_ routes: [MKRoute]) -> Void)? { get set }
+    var onModalStateChanged: ((_ state: MapDetailsState?) -> Void)? { get set }
     
     func loadPointOfInterests(location: CLLocation)
     func loadPointOfInterest(mapAnnotation: MapAnnotation)
     func loadDirections()
     
-    func getCenterLocation() -> CLLocation?
-    func getAnnotationsRegion() -> MKCoordinateRegion?
-    func getWikipediaLink() -> String?
-    func getAnnotationsMaxDistance() -> Double?
+    func setModalState(state: MapDetailsState)
+    func setModalStateWhenDimmed()
     
+    func getWikipediaLink() -> String?
+    func getAnnotationsWithoutInteraction() -> [MapAnnotation]
+    
+    func getRegionForCenter() -> MKCoordinateRegion?
     func getRegionForAnnotation(_ coordinate: CLLocationCoordinate2D) -> MKCoordinateRegion?
     func getTranslatedRegion(_ region: MKCoordinateRegion) -> MKCoordinateRegion
     func getTranslatedRegion(_ polyline: MKPolyline) -> MKCoordinateRegion

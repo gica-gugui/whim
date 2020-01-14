@@ -30,9 +30,6 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
     var viewModel: MapViewModelProtocol!
     
     private var annotationReuseIdentifier = "mapAnnotationIdentifier"
-    
-    // default card view state is normal
-    private var cardViewState : CardViewState = .normal
 
     // to store the card view top constraint value before the dragging start
     // default is 30 pt from safe area top
@@ -102,6 +99,49 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
   
             self?.centerMapToPolyline(polyline: route.polyline)
         }
+        
+        self.viewModel.onModalStateChanged = { [weak self] state in
+            switch state {
+            case .closed:
+                self?.onModalClosed()
+            case let .opened(mapAnnotation):
+                self?.onModalOpened(mapAnnotation: mapAnnotation)
+            case .directions:
+                self?.onDirectionsOpened()
+            case .routes:
+                return
+            default:
+                return
+            }
+        }
+    }
+    
+    private func onModalOpened(mapAnnotation: MapAnnotation) {
+        viewModel.loadPointOfInterest(mapAnnotation: mapAnnotation)
+        
+        showCard()
+    }
+    
+    private func onModalClosed() {
+        hideCardAndGoBack()
+        
+        deselectAllAnnotations()
+        
+        removeMapOverlays()
+        
+        addAnnotationsWithoutInteraction()
+        
+        resetPoiLabels()
+    }
+    
+    private func onDirectionsOpened() {
+        showCard(atState: .normal)
+        
+        removeAnnotationsWithoutInteraction()
+        
+        viewModel.loadDirections()
+        
+        dimmerView.alpha = dimAlphaWithCardTopConstraint(value: CGFloat.greatestFiniteMagnitude)
     }
     
     func locationObtained(location: CLLocation) {
@@ -127,11 +167,11 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
     private func setMapAnnotations(annotations: [MapAnnotation]) {
         self.mapView.addAnnotations(annotations)
         
-        guard let annotationsRegion = self.viewModel.getAnnotationsRegion() else {
+        guard let centerRegion = self.viewModel.getRegionForCenter() else {
             return
         }
         
-        self.mapView.setRegion(annotationsRegion, animated: true)
+        self.mapView.setRegion(centerRegion, animated: true)
     }
     
     private func setPOIDetails(poi: POIDetails) {
@@ -164,17 +204,16 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         centerMapToAnnotation(annotation: annotation)
-        
-        // center the map for any annotation tapped, including the you are here one, but open modal only for POI
+
         guard annotation.type == .poi else {
             return
         }
         
-        self.resetDetailsView()
-        
-        viewModel.loadPointOfInterest(mapAnnotation: annotation)
-        
-        showCard()
+        viewModel.setModalState(state: .opened(annotation))
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        viewModel.setModalState(state: .closed)
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -207,12 +246,35 @@ extension MapViewController: MKMapViewDelegate {
         
         mapView.setRegion(translatedRegion, animated: true)
     }
+    
+    private func addAnnotationsWithoutInteraction() {
+        let annotations = viewModel.getAnnotationsWithoutInteraction()
+        var annotationsToAdd = [MapAnnotation]()
+        
+        for annotation in annotations {
+            if mapView.annotations.first(where: { ($0 as? MapAnnotation)?.pageId == annotation.pageId }) == nil {
+                annotationsToAdd.append(annotation)
+            }
+        }
+        
+        mapView.addAnnotations(annotationsToAdd)
+    }
+    
+    private func removeAnnotationsWithoutInteraction() {
+        let annotations = viewModel.getAnnotationsWithoutInteraction()
+        
+        mapView.removeAnnotations(annotations)
+    }
+    
+    private func removeMapOverlays() {
+        mapView.removeOverlays(mapView.overlays)
+    }
 }
 
 // Modal handling
 extension MapViewController {
     @IBAction func dimmerViewTapped(_ sender: UITapGestureRecognizer) {
-        hideCardAndGoBack()
+        viewModel.setModalStateWhenDimmed()
     }
     
     @IBAction func viewPanned(_ panRecognizer: UIPanGestureRecognizer) {
@@ -233,7 +295,7 @@ extension MapViewController {
 
             case .ended:
                 if velocity.y > 1500.0 {
-                    hideCardAndGoBack()
+                    viewModel.setModalState(state: .closed)
                     return
                 }
             
@@ -245,7 +307,7 @@ extension MapViewController {
                     } else if self.cardViewTopConstraint.constant < (safeAreaHeight) - 70 {
                         showCard(atState: .normal)
                     } else {
-                        hideCardAndGoBack()
+                        viewModel.setModalState(state: .closed)
                     }
                 }
             default:
@@ -262,9 +324,7 @@ extension MapViewController {
     }
     
     @IBAction private func poiNavigationButtonTap(_ sender: Any) {
-        showCard(atState: .normal)
-        
-        viewModel.loadDirections()
+        viewModel.setModalState(state: .directions)
     }
     
     @IBAction private func poiRoutesButtonTap(_ sender: Any) {
@@ -346,8 +406,6 @@ extension MapViewController {
         
         // run the animation
         hideCard.startAnimation()
-        
-        self.deselectAllAnnotations()
     }
     
     private func dimAlphaWithCardTopConstraint(value: CGFloat) -> CGFloat {
@@ -383,7 +441,7 @@ extension MapViewController {
         return fullDimAlpha * 1 - ((value - fullDimPosition) / fullDimPosition)
     }
     
-    private func resetDetailsView() {
+    private func resetPoiLabels() {
         self.poiTitleLabel.text = ""
         self.poiDescriptionLabel.text = ""
     }
