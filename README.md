@@ -27,3 +27,24 @@ Main components defined in the application:
 - **Prepermission handler.** This handler displays and alert message to the user.
 
 - **LocationHandler.** This handler checks for the location permission status, asks for the location permission status and listens for a location changed event. When a new location event is triggered, the handler notifies the **Navigation coordinator** which will notify the Map View Controller to load the point of interests.
+
+3. Factories
+
+- **Coordinator factory.** Responsible for creating coordinators.
+
+- **Handler factory.** Responsible for creating handlers.
+
+- **Module factory.** Responsible for instantiating view controllers and for dependency injection.
+
+4. Router
+
+- **Router**. Handles the navigation.
+
+
+Libraries used:
+
+1. **Alamofire**. Used for performing requests. I preferred to use this library because I have used it in all the projects I developed. It is really helpfull, especially when having to deal with authentication.
+
+2. **RxSwift**. The API is constructed around Observables: each request is wrapped in an Observable, which is then passed towards the view client. The view client usually combines, flattens, maps the Observable, delaying the execution of the request, until subscribe is called. All the requests are performed on background work schedulers.
+
+3. **Kingfisher**. Used for downloading the images. Very straighforward and extensible. For example, even tough now SVGs are not correctly processed, a new image processor can be created using Kingfisher, which handles SVG images. Also, has out of the box image caching.
