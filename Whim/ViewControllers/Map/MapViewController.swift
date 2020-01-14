@@ -143,20 +143,20 @@ class MapViewController: BaseViewController, MapViewProtocol, IntermediableProto
 
 // MapViewDelegate
 extension MapViewController: MKMapViewDelegate {
-      func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? MapAnnotation else { return nil }
-        
+
         var view: MKMarkerAnnotationView
-        
+
         guard let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationReuseIdentifier) as? MKMarkerAnnotationView else {
             return nil
         }
-        
+
         dequeuedView.annotation = annotation
         view = dequeuedView
-        
+
         return view
-      }
+    }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? MapAnnotation else {

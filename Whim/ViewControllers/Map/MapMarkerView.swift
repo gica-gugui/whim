@@ -20,6 +20,10 @@ class MapMarkerView: MKMarkerAnnotationView {
             if let imageName = annotation.imageName {
                 glyphImage = UIImage(named: imageName)
             }
+            
+            if annotation.type == .currentLocation {
+                displayPriority = .required
+            }
         }
     }
 }
