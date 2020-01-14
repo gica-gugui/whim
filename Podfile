@@ -7,6 +7,7 @@ abstract_target 'WhimPods' do
 	pod 'Alamofire', '~> 4.8'
 	pod 'AlamofireNetworkActivityIndicator', '~> 2.4.0'
 	pod 'RxSwift', '~> 5'
+	pod 'Kingfisher', '~> 5.0'
 
 	target 'Whim' do
 		inherit! :search_paths
@@ -14,6 +15,7 @@ abstract_target 'WhimPods' do
 		pod 'Alamofire', '~> 4.8'
 		pod 'AlamofireNetworkActivityIndicator', '~> 2.4.0'
 		pod 'RxSwift', '~> 5'
+		pod 'Kingfisher', '~> 5.0'
 	end
     
     target 'WhimTests' do

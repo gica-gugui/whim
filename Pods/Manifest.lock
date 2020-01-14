@@ -2,24 +2,30 @@ PODS:
   - Alamofire (4.9.1)
   - AlamofireNetworkActivityIndicator (2.4.0):
     - Alamofire (~> 4.8)
+  - Kingfisher (5.12.0):
+    - Kingfisher/Core (= 5.12.0)
+  - Kingfisher/Core (5.12.0)
   - RxSwift (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.8)
   - AlamofireNetworkActivityIndicator (~> 2.4.0)
+  - Kingfisher (~> 5.0)
   - RxSwift (~> 5)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AlamofireNetworkActivityIndicator
+    - Kingfisher
     - RxSwift
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireNetworkActivityIndicator: 9acc3de3ca6645bf0efed462396b0df13dd3e7b8
+  Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
 
-PODFILE CHECKSUM: d6d81c6a29b859d55eebbdc6cbaa6ba9ddc72947
+PODFILE CHECKSUM: 6eeb28fcd792fd3cefc532f5f25318400f876cde
 
 COCOAPODS: 1.8.4
