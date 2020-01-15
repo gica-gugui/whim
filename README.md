@@ -2,7 +2,7 @@
 
 Known issues:
 
-- Short load time at application startup, until current location is obtained
+- There is a small loading time at application startup, until current location is obtained
 - SVG images are not handled
 - Apple Directions API was used instead of Google Directions API. I started developing using MapKit framework, and discovered too late that you cannot use Apple maps with Google Directions API (legal reasons firstly)
 
