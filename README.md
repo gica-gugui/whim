@@ -1,4 +1,4 @@
-# Whim assignment
+# Wikis assignment
 
 Known issues:
 
