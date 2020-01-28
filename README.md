@@ -1,3 +1,5 @@
+*The assignment specifications is in iOS_Developer_Programming_Exercise.pdf
+
 # Wikis assignment
 
 Known issues:
